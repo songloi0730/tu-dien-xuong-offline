@@ -1,0 +1,195 @@
+# Thuật ngữ rút từ mã nguồn phần mềm máy + SOP vận hành máy bắt vít + sổ tay máy cán con lăn — dịch theo ngữ cảnh nhà máy.
+# giản thể | pinyin (số thanh) | tiếng Việt | tiếng Anh | nhóm
+# --- Servo, bus, chuyển động ---
+伺服	si4 fu2	servo	servo	Chuyển động
+伺服驱动器	si4 fu2 qu1 dong4 qi4	driver servo	servo drive	Chuyển động
+主站	zhu3 zhan4	trạm chủ (EtherCAT Master)	master (EtherCAT)	Chuyển động
+从站	cong2 zhan4	trạm phụ (EtherCAT Slave)	slave (EtherCAT)	Chuyển động
+站号	zhan4 hao4	số trạm, địa chỉ trạm (trên bus)	station number, node address	Chuyển động
+站点ID	zhan4 dian3 ID	ID trạm (địa chỉ thiết bị trên bus)	station ID	Chuyển động
+总线	zong3 xian4	bus truyền thông (EtherCAT, CAN...)	fieldbus	Chuyển động
+轴卡	zhou2 ka3	card điều khiển trục	axis card	Chuyển động
+运控卡	yun4 kong4 ka3	card điều khiển chuyển động	motion control card	Chuyển động
+控制卡	kong4 zhi4 ka3	card điều khiển	control card	Chuyển động
+齿轮比	chi3 lun2 bi3	tỉ số truyền (xung/mm, xung/độ)	gear ratio	Chuyển động
+电子齿轮	dian4 zi3 chi3 lun2	bánh răng điện tử (tỉ số xung trong driver)	electronic gear	Chuyển động
+导程	dao3 cheng2	bước vít me (Lead)	lead (screw pitch)	Chuyển động
+反向间隙	fan3 xiang4 jian4 xi4	khe hở đảo chiều (Backlash)	backlash	Chuyển động
+圆弧插补	yuan2 hu2 cha1 bu3	nội suy cung tròn	circular interpolation	Chuyển động
+直线插补	zhi2 xian4 cha1 bu3	nội suy đường thẳng	linear interpolation	Chuyển động
+规划	gui1 hua4	quy hoạch quỹ đạo (lập profile chuyển động)	motion planning	Chuyển động
+双驱	shuang1 qu1	truyền động kép (gantry 2 động cơ cùng kéo 1 trục)	dual drive (gantry)	Chuyển động
+磁栅尺	ci2 shan1 chi3	thước từ (Magnetic scale)	magnetic linear scale	Chuyển động
+读数头	du2 shu4 tou2	đầu đọc (của thước từ/thước quang)	read head	Chuyển động
+移载	yi2 zai4	cụm chuyển (= 移栽, Transfer)	transfer	Chuyền & trạm
+载台	zai4 tai2	bàn mang sản phẩm (Stage)	stage, carrier table	Chuyền & trạm
+撞到	zhuang4 dao4	va vào, đụng phải	hit, collide	An toàn
+# --- Điện ---
+拨码	bo1 ma3	công tắc gạt DIP (đặt địa chỉ/ID)	DIP switch	Điện
+烧录	shao1 lu4	nạp (firmware/tham số vào driver, chip)	flash, program	Điều khiển
+下发参数	xia4 fa1 can1 shu4	gửi tham số xuống thiết bị	download parameters	Điều khiển
+人机屏	ren2 ji1 ping2	màn hình HMI	HMI screen	Điều khiển
+空开	kong1 kai1	aptomat (MCB, gọi tắt của 空气开关)	miniature circuit breaker	Điện
+漏保	lou4 bao3	aptomat chống giật (RCD/ELCB, gọi tắt của 漏电保护器)	residual current breaker	Điện
+凸轮开关	tu1 lun2 kai1 guan1	công tắc cam (công tắc nguồn tổng)	cam switch	Điện
+相线	xiang4 xian4	dây pha (L)	live wire (L)	Điện
+火线	huo3 xian4	dây nóng, dây pha (L)	live wire	Điện
+零线	ling2 xian4	dây trung tính (N)	neutral wire (N)	Điện
+地线	di4 xian4	dây tiếp địa (PE)	ground wire (PE)	Điện
+强电	qiang2 dian4	điện động lực (điện lưới AC)	power circuit	Điện
+弱电	ruo4 dian4	điện điều khiển (24V, tín hiệu)	control / low-voltage circuit	Điện
+万用表	wan4 yong4 biao3	đồng hồ vạn năng	multimeter	Điện
+号码管	hao4 ma3 guan3	ống lồng đánh số dây	wire marker sleeve	Điện
+线槽	xian4 cao2	máng điện, máng đi dây	cable duct	Điện
+扎带	za1 dai4	dây rút (lạt nhựa)	cable tie	Điện
+配电盘	pei4 dian4 pan2	bảng/tủ phân phối điện	distribution board	Điện
+线缆	xian4 lan3	cáp, dây cáp	cable	Điện
+网线	wang3 xian4	dây mạng (LAN)	network cable	Truyền thông
+通电	tong1 dian4	cấp điện, có điện	power on, energize	Điện
+去电	qu4 dian4	ngắt điện (bước kiểm tra mất điện)	power off (test)	Điện
+直流	zhi2 liu2	điện một chiều (DC)	direct current (DC)	Điện
+电阻	dian4 zu3	điện trở	resistance, resistor	Điện
+# --- Khí nén, cảm biến, cơ khí ---
+磁簧	ci2 huang2	công tắc lưỡi gà từ (cảm biến từ trên xi lanh, Reed switch)	reed switch	Cảm biến
+磁磺	ci2 huang2	cảm biến từ xi lanh (viết sai của 磁簧, hay gặp trong SOP)	reed switch (misspelling)	Cảm biến
+磁环	ci2 huan2	vòng từ trên piston; trong xưởng thường chỉ cảm biến từ xi lanh	magnetic ring (cylinder sensor)	Cảm biến
+阀岛	fa2 dao3	cụm van (Valve island: nhiều van điện từ trên một đế)	valve island	Khí nén
+堵头	du3 tou2	nút bịt	plug, blanking plug	Khí nén
+垫圈	dian4 quan1	gioăng, vòng đệm	washer, gasket	Cơ khí
+气路	qi4 lu4	đường khí	air circuit	Khí nén
+气压表	qi4 ya1 biao3	đồng hồ áp suất khí	pressure gauge	Khí nén
+泄气	xie4 qi4	xì khí, rò khí	air leak	Khí nén
+卧式	wo4 shi4	kiểu nằm ngang	horizontal type	Cơ khí
+本体	ben3 ti3	thân (động cơ/thiết bị), phần chính	body	Cơ khí
+辊	gun3	con lăn	roller	Cơ khí
+# --- Bắt vít, cán, tra keo ---
+消磁	xiao1 ci2	khử từ (mũi vít)	demagnetize	Bắt vít
+消磁位	xiao1 ci2 wei4	vị trí khử từ	demagnetizing position	Bắt vít
+辊压	gun3 ya1	cán ép bằng con lăn	roller pressing	Sản xuất
+生料	sheng1 liao4	liệu thô (chưa gia công)	unprocessed part	Vật liệu
+熟料	shu2 liao4	liệu đã gia công (đã cán/ép xong)	processed part	Vật liệu
+取生料位	qu3 sheng1 liao4 wei4	vị trí lấy liệu thô	raw-part pick position	Vật liệu
+放熟料位	fang4 shu2 liao4 wei4	vị trí đặt liệu đã gia công	finished-part place position	Vật liệu
+胶阀	jiao1 fa2	van keo	glue valve	Tra keo
+# --- Vận hành, MES, thị giác ---
+复归	fu4 gui1	về trạng thái ban đầu (reset, về gốc)	return to origin, reset	Phần mềm
+交机	jiao1 ji1	bàn giao máy	machine handover	Sản xuất
+派工	pai4 gong1	phân công việc (điều phối)	dispatch	Sản xuất
+报工	bao4 gong1	báo hoàn công (gửi kết quả sản xuất lên MES)	production report	MES
+补传	bu3 chuan2	gửi bù dữ liệu (gửi lại phần còn thiếu)	re-upload	MES
+分选	fen1 xuan3	phân loại (sắp xếp OK/NG)	sorting	Sản xuất
+开机	kai1 ji1	bật máy	power on	Sản xuất
+关机	guan1 ji1	tắt máy	shut down	Sản xuất
+停机	ting2 ji1	dừng máy	machine stop	Sản xuất
+一键	yi1 jian4	một nút bấm (thao tác một chạm)	one-click	Phần mềm
+对焦	dui4 jiao1	lấy nét	focus	Thị giác
+自动调谐	zi4 dong4 tiao2 xie2	tự dò thông số (Auto-tune)	auto-tune	Thị giác
+折弯机	zhe2 wan1 ji1	máy chấn (gấp)	bending machine	Sản xuất
+高创	gao1 chuang4	Servotronix (hãng driver servo, tên TQ là 高创)	Servotronix	Hãng
+凌臣	ling2 chen2	hãng card EtherCAT (Lingchen)	Lingchen (EtherCAT card brand)	Hãng
+# --- Lập trình (đọc chú thích / thông báo trong mã nguồn) ---
+变量	bian4 liang4	biến (Variable)	variable	Lập trình
+函数	han2 shu4	hàm (Function)	function	Lập trình
+节点	jie2 dian3	nút; mục (Section) trong file INI	node; INI section	Lập trình
+关键字	guan1 jian4 zi4	khóa (Key) trong INI; từ khóa	key; keyword	Lập trình
+键值对	jian4 zhi2 dui4	cặp khóa–giá trị	key-value pair	Lập trình
+属性	shu3 xing4	thuộc tính (Property)	property	Lập trình
+索引	suo3 yin3	chỉ số (Index)	index	Lập trình
+委托	wei3 tuo1	delegate (C#)	delegate	Lập trình
+事件	shi4 jian4	sự kiện (Event)	event	Lập trình
+回调	hui2 diao4	hàm gọi lại (Callback)	callback	Lập trình
+线程	xian4 cheng2	luồng (Thread)	thread	Lập trình
+句柄	ju4 bing3	handle (tay cầm tài nguyên)	handle	Lập trình
+实例	shi2 li4	thể hiện (Instance)	instance	Lập trình
+对象	dui4 xiang4	đối tượng (Object)	object	Lập trình
+类	lei4	lớp (Class)	class	Lập trình
+基类	ji1 lei4	lớp cơ sở (Base class)	base class	Lập trình
+构造函数	gou4 zao4 han2 shu4	hàm dựng (Constructor)	constructor	Lập trình
+数组	shu4 zu3	mảng (Array)	array	Lập trình
+字符串	zi4 fu2 chuan4	chuỗi (String)	string	Lập trình
+整型	zheng3 xing2	số nguyên (int)	integer	Lập trình
+浮点	fu2 dian3	số thực (float/double)	floating point	Lập trình
+结构体	jie2 gou4 ti3	cấu trúc (Struct)	struct	Lập trình
+枚举	mei2 ju3	kiểu liệt kê (Enum)	enum	Lập trình
+接口	jie1 kou3	giao diện (Interface); cổng kết nối	interface; port	Lập trình
+异步	yi4 bu4	bất đồng bộ (Async)	asynchronous	Lập trình
+同步	tong2 bu4	đồng bộ (Sync)	synchronous	Lập trình
+缓冲区	huan3 chong1 qu1	bộ đệm (Buffer)	buffer	Lập trình
+返回值	fan3 hui2 zhi2	giá trị trả về	return value	Lập trình
+调用	diao4 yong4	gọi (hàm)	call, invoke	Lập trình
+捕获	bu3 huo4	bắt (ngoại lệ)	catch	Lập trình
+抛出	pao1 chu1	ném (ngoại lệ)	throw	Lập trình
+释放	shi4 fang4	giải phóng (tài nguyên)	release, dispose	Lập trình
+反初化	fan3 chu1 hua4	hủy khởi tạo (giải phóng card/thiết bị)	deinitialize	Lập trình
+序列化	xu4 lie4 hua4	tuần tự hóa (Serialize)	serialize	Lập trình
+表达式	biao3 da2 shi4	biểu thức	expression	Lập trình
+字段	zi4 duan4	trường (Field)	field	Lập trình
+列名	lie4 ming2	tên cột	column name	Lập trình
+表名	biao3 ming2	tên bảng	table name	Lập trình
+报文	bao4 wen2	gói tin, bản tin (Telegram)	message, frame	Truyền thông
+协议	xie2 yi4	giao thức	protocol	Truyền thông
+客户端	ke4 hu4 duan1	máy khách (Client)	client	Truyền thông
+服务端	fu2 wu4 duan1	máy chủ (Server)	server	Truyền thông
+心跳	xin1 tiao4	tín hiệu nhịp tim (Heartbeat)	heartbeat	Truyền thông
+看门狗	kan1 men2 gou3	Watchdog (giám sát treo)	watchdog	Điều khiển
+控件	kong4 jian4	điều khiển giao diện (Control)	control (UI)	Lập trình
+窗体	chuang1 ti3	cửa sổ (Form)	form	Lập trình
+绑定	bang3 ding4	ràng buộc (Binding)	binding	Lập trình
+# --- Hư từ hay gặp trong SOP ---
+若	ruo4	nếu	if	Từ chung
+当	dang1	khi (khi mà); làm (vai trò)	when	Từ chung
+和	he2	và	and	Từ chung
+为	wei2	là; làm	is; as	Từ chung
+会	hui4	sẽ; có thể	will; can	Từ chung
+如图	ru2 tu2	như hình	as shown in the figure	Từ chung
+所示	suo3 shi4	được thể hiện (như hình/bảng)	as shown	Từ chung
+如图所示	ru2 tu2 suo3 shi4	như hình minh họa	as shown in the figure	Từ chung
+排查	pai2 cha2	rà soát, tìm nguyên nhân lỗi	troubleshoot	Từ chung
+下拉	xia4 la1	kéo xuống, gạt xuống (aptomat); danh sách thả xuống	pull down; drop-down	Từ chung
+# --- Bổ sung từ 3 SOP PowerPoint: làn nhỏ, cảm biến chỉnh kim trục Z, nạp vít ---
+小流道	xiao3 liu2 dao4	làn nhỏ (làn phụ để nạp/lấy khay bằng tay)	small runner (manual lane)	Chuyền & trạm
+上料模式	shang4 liao4 mo2 shi4	chế độ nạp liệu (bằng tay)	loading mode	Phần mềm
+下料模式	xia4 liao4 mo2 shi4	chế độ xả liệu (lấy khay ra bằng tay)	unloading mode	Phần mềm
+正常生产模式	zheng4 chang2 sheng1 chan3 mo2 shi4	chế độ sản xuất bình thường	normal production mode	Phần mềm
+切回	qie1 hui2	chuyển về (chế độ cũ)	switch back	Phần mềm
+长按	chang2 an4	nhấn giữ	long press	Từ chung
+常亮	chang2 liang4	sáng liên tục	steady on	An toàn
+闪烁	shan3 shuo4	nhấp nháy	blink	An toàn
+指示灯	zhi3 shi4 deng1	đèn báo	indicator lamp	An toàn
+按钮灯	an4 niu3 deng1	đèn trên nút bấm	button lamp	An toàn
+流入	liu2 ru4	đi vào, chảy vào (sản phẩm/vít vào trạm, vào feeder)	flow in	Vật liệu
+到位信号	dao4 wei4 xin4 hao4	tín hiệu đến vị trí	in-position signal	Cảm biến
+极限信号	ji2 xian4 xin4 hao4	tín hiệu giới hạn	limit signal	Cảm biến
+总初始化	zong3 chu1 shi3 hua4	khởi tạo toàn máy	full machine initialization	Phần mềm
+画面	hua4 mian4	màn hình, trang (trên HMI)	screen, page (HMI)	Phần mềm
+轴控画面	zhou2 kong4 hua4 mian4	màn hình điều khiển trục	axis control screen	Phần mềm
+手动画面	shou3 dong4 hua4 mian4	màn hình thao tác tay	manual screen	Phần mềm
+IO监控	IO jian1 kong4	giám sát IO	IO monitor	Phần mềm
+权限登录	quan2 xian4 deng1 lu4	đăng nhập phân quyền	permission login	Phần mềm
+准备位	zhun3 bei4 wei4	vị trí chuẩn bị (điểm chờ trước khi vào vị trí làm việc)	ready position	Chuyển động
+对刀仪位	dui4 dao1 yi2 wei4	vị trí cảm biến chỉnh kim (điểm dò chiều cao mũi vít)	tool-setter position	Bắt vít
+对刀	dui4 dao1	dò/chỉnh chiều cao dao, kim, mũi vít bằng cảm biến	tool setting	Bắt vít
+对刀参数	dui4 dao1 can1 shu4	tham số chỉnh kim (Tool setter)	tool-setting parameters	Bắt vít
+圆心	yuan2 xin1	tâm đường tròn	circle center	Đo lường
+圆盘	yuan2 pan2	mặt đĩa tròn	disc	Cơ khí
+标定参数	biao1 ding4 can1 shu4	tham số hiệu chuẩn	calibration parameters	Phần mềm
+标定模式	biao1 ding4 mo2 shi4	chế độ hiệu chuẩn	calibration mode	Phần mềm
+工艺参数	gong1 yi4 can1 shu4	tham số công nghệ (quy trình gia công)	process parameters	Phần mềm
+基准值	ji1 zhun3 zhi2	giá trị chuẩn (mốc so sánh)	reference value	Đo lường
+探针	tan4 zhen1	đầu dò (Probe)	probe	Cảm biến
+探针值	tan4 zhen1 zhi2	giá trị đầu dò	probe value	Đo lường
+电批头	dian4 pi1 tou2	mũi tô vít điện	screwdriver bit	Bắt vít
+电披头	dian4 pi1 tou2	mũi tô vít điện (viết sai của 电批头, hay gặp trong SOP)	screwdriver bit (misspelling)	Bắt vít
+漏斗	lou4 dou3	phễu (chứa vít chờ đổ vào feeder)	hopper, funnel	Bắt vít
+螺丝型号	luo2 si1 xing2 hao4	loại vít, mã vít	screw type	Bắt vít
+备用	bei4 yong4	dự phòng	spare, backup	Từ chung
+缺料提示	que1 liao4 ti2 shi4	nhắc thiếu liệu	material-shortage prompt	Vật liệu
+包装袋	bao1 zhuang1 dai4	túi đóng gói	packaging bag	Vật liệu
+一维码	yi1 wei2 ma3	mã vạch 1D	1D barcode	Thị giác
+识别	shi2 bie2	nhận dạng	recognize	Thị giác
+扫码屏蔽	sao3 ma3 ping2 bi4	bỏ qua quét mã (tắt kiểm tra mã)	scan bypass	Phần mềm
+阻断气缸	zu3 duan4 qi4 gang1	xi lanh chặn dòng liệu (mở cho vít từ phễu xuống feeder)	gate cylinder	Khí nén
+关闭延时	guan1 bi4 yan2 shi2	thời gian trễ đóng	closing delay	Phần mềm
+倒入	dao4 ru4	đổ vào	pour in	Từ chung
+跳出	tiao4 chu1	bật ra (cửa sổ popup)	pop up	Phần mềm
+响	xiang3	kêu (còi)	sound, beep	Từ chung

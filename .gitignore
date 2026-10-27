@@ -1,0 +1,11 @@
+# Dữ liệu nguồn tải về (python build/fetch_sources.py)
+_src/
+# Bản build (phát hành qua GitHub Releases)
+dist/
+# Tài liệu và script chỉ dùng nội bộ — KHÔNG đưa lên
+build/_noi-bo/
+bao-cao/
+# Linh tinh
+__pycache__/
+*.pyc
+.claude/

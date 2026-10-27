@@ -1,0 +1,336 @@
+# Bộ thuật ngữ xưởng (khởi đầu) — giản thể | pinyin (số thanh) | tiếng Việt | tiếng Anh | nhóm
+# Nghĩa ghi theo cách nói phổ biến trong nhà máy; hãy sửa/bổ sung theo cách gọi ở xưởng bạn.
+# Dòng bắt đầu bằng # bị bỏ qua. Cột cách nhau bằng TAB.
+启动	qi3 dong4	khởi động, bắt đầu chạy (Start)	start	Phần mềm
+停止	ting2 zhi3	dừng (Stop)	stop	Phần mềm
+暂停	zan4 ting2	tạm dừng (Pause)	pause	Phần mềm
+继续	ji4 xu4	tiếp tục (Resume)	resume, continue	Phần mềm
+复位	fu4 wei4	reset, khôi phục trạng thái ban đầu	reset	Phần mềm
+急停	ji2 ting2	dừng khẩn cấp (E-Stop)	emergency stop	An toàn
+初始化	chu1 shi3 hua4	khởi tạo	initialize	Phần mềm
+手动	shou3 dong4	chế độ tay, thủ công (Manual)	manual	Phần mềm
+自动	zi4 dong4	tự động (Auto)	automatic	Phần mềm
+单步	dan1 bu4	chạy từng bước	single step	Phần mềm
+空跑	kong1 pao3	chạy không tải, chạy khô (dry run)	dry run	Phần mềm
+运行	yun4 xing2	đang chạy, vận hành	run, running	Phần mềm
+待机	dai4 ji1	chờ, đứng máy chờ (standby)	standby	Phần mềm
+就绪	jiu4 xu4	sẵn sàng (Ready)	ready	Phần mềm
+报警	bao4 jing3	báo động, cảnh báo lỗi máy (Alarm)	alarm	Phần mềm
+警告	jing3 gao4	cảnh báo (Warning)	warning	Phần mềm
+故障	gu4 zhang4	sự cố, hỏng hóc (Fault)	fault, breakdown	Phần mềm
+错误	cuo4 wu4	lỗi (Error)	error	Phần mềm
+异常	yi4 chang2	bất thường, sự cố	abnormal, exception	Phần mềm
+失败	shi1 bai4	thất bại, không thành công (Fail)	fail, failed	Phần mềm
+成功	cheng2 gong1	thành công (OK)	success	Phần mềm
+完成	wan2 cheng2	hoàn thành (Done)	complete, done	Phần mềm
+合格	he2 ge2	đạt, đạt yêu cầu (Pass/OK)	pass, qualified	Chất lượng
+不合格	bu4 he2 ge2	không đạt (Fail/NG)	fail, unqualified	Chất lượng
+请稍候	qing3 shao1 hou4	vui lòng chờ	please wait	Phần mềm
+清除	qing1 chu2	xóa, xóa bỏ (Clear)	clear	Phần mềm
+确认	que4 ren4	xác nhận (OK/Confirm)	confirm	Phần mềm
+取消	qu3 xiao1	hủy (Cancel)	cancel	Phần mềm
+保存	bao3 cun2	lưu (Save)	save	Phần mềm
+加载	jia1 zai3	tải, nạp (Load)	load	Phần mềm
+导入	dao3 ru4	nhập vào (Import)	import	Phần mềm
+导出	dao3 chu1	xuất ra (Export)	export	Phần mềm
+设置	she4 zhi4	cài đặt (Settings)	settings, setup	Phần mềm
+参数	can1 shu4	tham số, thông số	parameter	Phần mềm
+配方	pei4 fang1	công thức sản phẩm (Recipe)	recipe	Phần mềm
+用户	yong4 hu4	người dùng	user	Phần mềm
+登录	deng1 lu4	đăng nhập	log in	Phần mềm
+注销	zhu4 xiao1	đăng xuất; hủy bỏ (đăng ký)	log out; cancel	Phần mềm
+密码	mi4 ma3	mật khẩu	password	Phần mềm
+权限	quan2 xian4	quyền hạn, phân quyền	permission	Phần mềm
+管理员	guan3 li3 yuan2	quản trị viên (Admin)	administrator	Phần mềm
+操作员	cao1 zuo4 yuan2	người vận hành (Operator)	operator	Phần mềm
+日志	ri4 zhi4	nhật ký (Log)	log	Phần mềm
+历史记录	li4 shi3 ji4 lu4	lịch sử, bản ghi cũ	history	Phần mềm
+统计	tong3 ji4	thống kê	statistics	Phần mềm
+计数	ji4 shu4	đếm, bộ đếm	count, counter	Phần mềm
+清零	qing1 ling2	đặt về 0, xóa số đếm	reset to zero	Phần mềm
+版本	ban3 ben3	phiên bản	version	Phần mềm
+升级	sheng1 ji2	nâng cấp	upgrade	Phần mềm
+备份	bei4 fen4	sao lưu	backup	Phần mềm
+恢复	hui1 fu4	khôi phục	restore, recover	Phần mềm
+调试	tiao2 shi4	chạy thử, căn chỉnh máy; gỡ lỗi (Debug)	debug, commissioning	Phần mềm
+监控	jian1 kong4	giám sát	monitor	Phần mềm
+屏蔽	ping2 bi4	bỏ qua, vô hiệu hóa (Bypass/Mask)	bypass, mask	Phần mềm
+启用	qi3 yong4	bật, cho phép dùng	enable	Phần mềm
+禁用	jin4 yong4	tắt, không cho dùng	disable	Phần mềm
+使能	shi3 neng2	cho phép (Enable, thường dùng cho servo)	enable	Phần mềm
+上电	shang4 dian4	cấp điện, bật nguồn	power on	Điện
+断电	duan4 dian4	ngắt điện, mất điện	power off	Điện
+超时	chao1 shi2	quá thời gian (Timeout)	timeout	Phần mềm
+掉线	diao4 xian4	mất kết nối, rớt mạng	disconnected	Truyền thông
+通讯	tong1 xun4	truyền thông, giao tiếp (Communication)	communication	Truyền thông
+连接	lian2 jie1	kết nối	connect	Truyền thông
+断开	duan4 kai1	ngắt kết nối	disconnect	Truyền thông
+串口	chuan4 kou3	cổng nối tiếp (COM, RS232/485)	serial port	Truyền thông
+网口	wang3 kou3	cổng mạng (LAN)	network port	Truyền thông
+端口	duan1 kou3	cổng (Port)	port	Truyền thông
+握手	wo4 shou3	bắt tay tín hiệu (Handshake)	handshake	Truyền thông
+上位机	shang4 wei4 ji1	máy tính chủ (PC điều khiển/giám sát)	host PC	Điều khiển
+下位机	xia4 wei4 ji1	bộ điều khiển cấp dưới (PLC, vi điều khiển)	slave controller (PLC/MCU)	Điều khiển
+工控机	gong1 kong4 ji1	máy tính công nghiệp (IPC)	industrial PC	Điều khiển
+触摸屏	chu4 mo1 ping2	màn hình cảm ứng (HMI)	touch screen, HMI	Điều khiển
+运动控制卡	yun4 dong4 kong4 zhi4 ka3	card điều khiển chuyển động	motion control card	Điều khiển
+板卡	ban3 ka3	card, bo mạch cắm	board, card	Điều khiển
+输入	shu1 ru4	đầu vào (Input)	input	Điều khiển
+输出	shu1 chu1	đầu ra (Output)	output	Điều khiển
+信号	xin4 hao4	tín hiệu	signal	Điều khiển
+伺服电机	si4 fu2 dian4 ji1	động cơ servo	servo motor	Chuyển động
+步进电机	bu4 jin4 dian4 ji1	động cơ bước	stepper motor	Chuyển động
+驱动器	qu1 dong4 qi4	bộ điều khiển động cơ (Driver)	drive, driver	Chuyển động
+编码器	bian1 ma3 qi4	bộ mã hóa vòng quay (Encoder)	encoder	Chuyển động
+轴	zhou2	trục	axis	Chuyển động
+原点	yuan2 dian3	gốc, điểm gốc (Home)	home, origin	Chuyển động
+回原点	hui2 yuan2 dian3	về gốc (Homing)	homing, return to origin	Chuyển động
+原点回归	yuan2 dian3 hui2 gui1	về gốc (Homing)	homing, return to origin	Chuyển động
+气压不足	qi4 ya1 bu4 zu2	thiếu áp suất khí	low air pressure	Khí nén
+真空异常	zhen1 kong1 yi4 chang2	lỗi chân không (hút không đạt)	vacuum error	Khí nén
+回零	hui2 ling2	về điểm 0, về gốc	return to zero, homing	Chuyển động
+限位	xian4 wei4	giới hạn hành trình (Limit)	limit	Chuyển động
+正限位	zheng4 xian4 wei4	giới hạn dương (+Limit)	positive limit	Chuyển động
+负限位	fu4 xian4 wei4	giới hạn âm (−Limit)	negative limit	Chuyển động
+软限位	ruan3 xian4 wei4	giới hạn mềm (Soft limit)	software limit	Chuyển động
+点动	dian3 dong4	chạy nhích (Jog)	jog	Chuyển động
+示教	shi4 jiao4	dạy điểm (Teach)	teach	Chuyển động
+示教器	shi4 jiao4 qi4	tay dạy robot (Teach pendant)	teach pendant	Chuyển động
+点位	dian3 wei4	điểm vị trí	point, position	Chuyển động
+坐标	zuo4 biao1	tọa độ	coordinate	Chuyển động
+速度	su4 du4	tốc độ	speed, velocity	Chuyển động
+加速度	jia1 su4 du4	gia tốc	acceleration	Chuyển động
+行程	xing2 cheng2	hành trình	stroke, travel	Chuyển động
+到位	dao4 wei4	đến vị trí, vào vị trí (In position)	in position	Chuyển động
+丝杆	si1 gan3	trục vít me	lead screw	Cơ khí
+滚珠丝杠	gun3 zhu1 si1 gang4	vít me bi	ball screw	Cơ khí
+导轨	dao3 gui3	ray dẫn hướng (Linear guide)	linear guide	Cơ khí
+滑块	hua2 kuai4	con trượt	slider, carriage	Cơ khí
+同步带	tong2 bu4 dai4	dây đai răng (Timing belt)	timing belt	Cơ khí
+同步轮	tong2 bu4 lun2	puly đai răng	timing pulley	Cơ khí
+联轴器	lian2 zhou2 qi4	khớp nối trục	coupling	Cơ khí
+减速机	jian3 su4 ji1	hộp giảm tốc	gear reducer	Cơ khí
+轴承	zhou2 cheng2	vòng bi, ổ bi	bearing	Cơ khí
+模组	mo2 zu3	module trục tuyến tính	linear module	Cơ khí
+直线电机	zhi2 xian4 dian4 ji1	động cơ tuyến tính	linear motor	Chuyển động
+转盘	zhuan4 pan2	mâm xoay	rotary table	Cơ khí
+分度盘	fen1 du4 pan2	bàn chia độ	indexing table	Cơ khí
+凸轮分割器	tu1 lun2 fen1 ge1 qi4	bộ chia cam (Cam indexer)	cam indexer	Cơ khí
+机械手	ji1 xie4 shou3	tay máy, robot	manipulator, robot arm	Cơ khí
+机器人	ji1 qi4 ren2	robot	robot	Cơ khí
+螺丝	luo2 si1	ốc vít	screw	Cơ khí
+锁螺丝	suo3 luo2 si1	bắt vít, siết vít	screw fastening	Cơ khí
+电批	dian4 pi1	tô vít điện	electric screwdriver	Cơ khí
+扭力	niu3 li4	lực siết, mô-men siết	torque	Cơ khí
+扭矩	niu3 ju3	mô-men xoắn	torque	Cơ khí
+弹簧	tan2 huang2	lò xo	spring	Cơ khí
+定位销	ding4 wei4 xiao1	chốt định vị	locating pin	Cơ khí
+治具	zhi4 ju4	đồ gá, jig	jig, fixture	Cơ khí
+夹具	jia1 ju4	đồ kẹp, đồ gá kẹp	fixture, clamp	Cơ khí
+载具	zai4 ju4	khay/đế mang sản phẩm (Carrier)	carrier	Cơ khí
+料盘	liao4 pan2	khay liệu (Tray)	tray	Vật liệu
+夹爪	jia1 zhua3	tay kẹp, ngàm kẹp (Gripper)	gripper	Cơ khí
+吸嘴	xi1 zui3	đầu hút (Nozzle)	suction nozzle	Cơ khí
+吸盘	xi1 pan2	giác hút	suction cup	Khí nén
+气缸	qi4 gang1	xi lanh khí nén	pneumatic cylinder	Khí nén
+电磁阀	dian4 ci2 fa2	van điện từ	solenoid valve	Khí nén
+真空	zhen1 kong1	chân không	vacuum	Khí nén
+真空发生器	zhen1 kong1 fa1 sheng1 qi4	bộ tạo chân không (Ejector)	vacuum generator, ejector	Khí nén
+破真空	po4 zhen1 kong1	phá chân không (thổi nhả)	vacuum break, blow-off	Khí nén
+负压	fu4 ya1	áp suất âm, áp chân không	negative pressure, vacuum	Khí nén
+气压	qi4 ya1	áp suất khí	air pressure	Khí nén
+调压阀	tiao2 ya1 fa2	van điều áp	pressure regulator	Khí nén
+节流阀	jie2 liu2 fa2	van tiết lưu	throttle valve, flow control	Khí nén
+气管	qi4 guan3	ống khí	air tube	Khí nén
+接头	jie1 tou2	đầu nối, khớp nối	fitting, connector	Khí nén
+漏气	lou4 qi4	rò khí	air leak	Khí nén
+伸出	shen1 chu1	duỗi ra, đẩy ra (Extend)	extend	Khí nén
+缩回	suo1 hui2	thu về (Retract)	retract	Khí nén
+夹紧	jia1 jin3	kẹp chặt	clamp	Cơ khí
+松开	song1 kai1	nhả ra	release, unclamp	Cơ khí
+上升	shang4 sheng1	đi lên	up, rise	Cơ khí
+下降	xia4 jiang4	đi xuống	down, lower	Cơ khí
+旋转	xuan2 zhuan3	xoay	rotate	Cơ khí
+顶升	ding3 sheng1	nâng lên (Jacking)	lift, jacking	Cơ khí
+阻挡	zu3 dang3	chặn (Stopper)	stopper	Cơ khí
+传感器	chuan2 gan3 qi4	cảm biến	sensor	Cảm biến
+光电开关	guang1 dian4 kai1 guan1	cảm biến quang	photoelectric sensor	Cảm biến
+接近开关	jie1 jin4 kai1 guan1	cảm biến tiệm cận	proximity sensor	Cảm biến
+磁性开关	ci2 xing4 kai1 guan1	cảm biến từ (gắn xi lanh)	magnetic switch	Cảm biến
+光纤传感器	guang1 xian1 chuan2 gan3 qi4	cảm biến sợi quang	fiber optic sensor	Cảm biến
+压力传感器	ya1 li4 chuan2 gan3 qi4	cảm biến áp suất	pressure sensor	Cảm biến
+感应器	gan3 ying4 qi4	cảm biến (cách gọi trong xưởng)	sensor	Cảm biến
+感应	gan3 ying4	cảm ứng, nhận biết (cảm biến báo có)	sense, detect	Cảm biến
+有料	you3 liao4	có liệu, có sản phẩm	material present	Vật liệu
+无料	wu2 liao4	không có liệu	no material	Vật liệu
+满料	man3 liao4	đầy liệu	material full	Vật liệu
+空盘	kong1 pan2	khay trống	empty tray	Vật liệu
+安全门	an1 quan2 men2	cửa an toàn	safety door	An toàn
+安全光栅	an1 quan2 guang1 shan1	màn chắn sáng an toàn (Light curtain)	safety light curtain	An toàn
+联锁	lian2 suo3	khóa liên động (Interlock)	interlock	An toàn
+三色灯	san1 se4 deng1	đèn tháp 3 màu	tower light	An toàn
+蜂鸣器	feng1 ming2 qi4	còi báo (Buzzer)	buzzer	An toàn
+上锁挂牌	shang4 suo3 gua4 pai2	khóa và treo thẻ (LOTO)	lockout tagout (LOTO)	An toàn
+劳保用品	lao2 bao3 yong4 pin3	đồ bảo hộ lao động	PPE	An toàn
+静电	jing4 dian4	tĩnh điện	static electricity	An toàn
+防静电	fang2 jing4 dian4	chống tĩnh điện (ESD)	anti-static, ESD	An toàn
+静电环	jing4 dian4 huan2	vòng đeo tay chống tĩnh điện	wrist strap	An toàn
+撞机	zhuang4 ji1	va chạm máy (Crash)	machine crash, collision	An toàn
+继电器	ji4 dian4 qi4	rơ-le	relay	Điện
+接触器	jie1 chu4 qi4	khởi động từ (Contactor)	contactor	Điện
+断路器	duan4 lu4 qi4	aptomat, CB	circuit breaker	Điện
+保险丝	bao3 xian3 si1	cầu chì	fuse	Điện
+变频器	bian4 pin2 qi4	biến tần	inverter, VFD	Điện
+开关电源	kai1 guan1 dian4 yuan2	bộ nguồn xung	switching power supply	Điện
+电源	dian4 yuan2	nguồn điện	power supply	Điện
+端子	duan1 zi3	cầu đấu, đầu cốt (Terminal)	terminal	Điện
+接地	jie1 di4	nối đất, tiếp địa	grounding	Điện
+电压	dian4 ya1	điện áp	voltage	Điện
+电流	dian4 liu2	dòng điện	current	Điện
+短路	duan3 lu4	ngắn mạch, chập mạch	short circuit	Điện
+断线	duan4 xian4	đứt dây	broken wire	Điện
+漏电	lou4 dian4	rò điện	electric leakage	Điện
+电机	dian4 ji1	động cơ điện, mô-tơ	motor	Điện
+扫码枪	sao3 ma3 qiang1	súng quét mã vạch	barcode scanner	Thị giác
+条码	tiao2 ma3	mã vạch	barcode	Thị giác
+二维码	er4 wei2 ma3	mã QR, mã 2D	QR code, 2D code	Thị giác
+读码	du2 ma3	đọc mã	code reading	Thị giác
+相机	xiang4 ji1	camera	camera	Thị giác
+镜头	jing4 tou2	ống kính	lens	Thị giác
+光源	guang1 yuan2	nguồn sáng, đèn chiếu	light source	Thị giác
+视觉	shi4 jue2	thị giác máy (Vision)	machine vision	Thị giác
+拍照	pai1 zhao4	chụp ảnh	capture image	Thị giác
+定位	ding4 wei4	định vị	positioning, locate	Thị giác
+标定	biao1 ding4	hiệu chuẩn (camera, tọa độ)	calibration	Thị giác
+校准	jiao4 zhun3	hiệu chuẩn, căn chỉnh	calibration	Thị giác
+模板	mo2 ban3	mẫu (Template)	template, model	Thị giác
+匹配	pi3 pei4	so khớp	match	Thị giác
+偏移	pian1 yi2	độ lệch (Offset)	offset	Thị giác
+补偿	bu3 chang2	bù (Compensation)	compensation	Thị giác
+精度	jing1 du4	độ chính xác	accuracy, precision	Chất lượng
+公差	gong1 cha1	dung sai	tolerance	Chất lượng
+尺寸	chi3 cun4	kích thước	dimension	Chất lượng
+检测	jian3 ce4	kiểm tra, phát hiện	inspect, detect	Chất lượng
+测量	ce4 liang2	đo lường	measure	Chất lượng
+外观	wai4 guan1	ngoại quan, bề ngoài	appearance, cosmetic	Chất lượng
+划伤	hua2 shang1	trầy xước	scratch	Lỗi
+脏污	zang1 wu1	bẩn	dirt, contamination	Lỗi
+缺料	que1 liao4	thiếu liệu	missing material	Lỗi
+漏装	lou4 zhuang1	lắp thiếu	missing part	Lỗi
+错装	cuo4 zhuang1	lắp sai	wrong assembly	Lỗi
+反向	fan3 xiang4	ngược chiều	reversed	Lỗi
+变形	bian4 xing2	biến dạng	deformation	Lỗi
+毛刺	mao2 ci4	bavia	burr	Lỗi
+气泡	qi4 pao4	bọt khí	bubble	Lỗi
+异物	yi4 wu4	dị vật	foreign matter	Lỗi
+压伤	ya1 shang1	vết đè, vết ép	dent, pressure mark	Lỗi
+色差	se4 cha1	sai màu, lệch màu	color difference	Lỗi
+卡料	ka3 liao4	kẹt liệu	material jam	Lỗi
+良品	liang2 pin3	hàng đạt (OK)	good product (OK)	Chất lượng
+不良品	bu4 liang2 pin3	hàng lỗi (NG)	defective product (NG)	Chất lượng
+不良	bu4 liang2	lỗi, không đạt	defect, NG	Chất lượng
+良率	liang2 lu:4	tỷ lệ đạt (Yield)	yield	Chất lượng
+不良率	bu4 liang2 lu:4	tỷ lệ lỗi	defect rate	Chất lượng
+直通率	zhi2 tong1 lu:4	tỷ lệ đạt lần đầu (FPY)	first pass yield	Chất lượng
+返工	fan3 gong1	làm lại (Rework)	rework	Chất lượng
+报废	bao4 fei4	hủy bỏ, phế phẩm (Scrap)	scrap	Chất lượng
+首件	shou3 jian4	sản phẩm đầu tiên, kiểm tra mẫu đầu (First article)	first article	Chất lượng
+巡检	xun2 jian3	kiểm tra tuần tra	patrol inspection	Chất lượng
+抽检	chou1 jian3	kiểm tra lấy mẫu	sampling inspection	Chất lượng
+全检	quan2 jian3	kiểm tra 100%	full inspection	Chất lượng
+来料检验	lai2 liao4 jian3 yan4	kiểm tra vật liệu đầu vào (IQC)	incoming inspection (IQC)	Chất lượng
+制程检验	zhi4 cheng2 jian3 yan4	kiểm tra trong quá trình (IPQC)	in-process inspection (IPQC)	Chất lượng
+出货检验	chu1 huo4 jian3 yan4	kiểm tra xuất hàng (OQC)	outgoing inspection (OQC)	Chất lượng
+品质	pin3 zhi4	chất lượng	quality	Chất lượng
+品管	pin3 guan3	quản lý chất lượng (QC)	quality control	Chất lượng
+客诉	ke4 su4	khiếu nại khách hàng	customer complaint	Chất lượng
+追溯	zhui1 su4	truy xuất nguồn gốc	traceability	Chất lượng
+生产线	sheng1 chan3 xian4	dây chuyền sản xuất	production line	Sản xuất
+产线	chan3 xian4	dây chuyền, chuyền	production line	Sản xuất
+流水线	liu2 shui3 xian4	dây chuyền, băng chuyền	assembly line, conveyor	Sản xuất
+输送线	shu1 song4 xian4	băng tải	conveyor	Sản xuất
+皮带	pi2 dai4	dây đai, băng tải	belt	Cơ khí
+滚筒	gun3 tong3	con lăn, tang trống	roller, drum	Cơ khí
+工站	gong1 zhan4	trạm (Station)	station	Sản xuất
+工序	gong1 xu4	công đoạn	process step	Sản xuất
+工位	gong1 wei4	vị trí làm việc, vị trí thao tác	workstation	Sản xuất
+上料	shang4 liao4	cấp liệu, nạp liệu (Loading)	loading	Sản xuất
+下料	xia4 liao4	lấy liệu ra, xả liệu (Unloading); cắt phôi	unloading; blanking	Sản xuất
+来料	lai2 liao4	vật liệu nhập vào	incoming material	Vật liệu
+物料	wu4 liao4	vật liệu, vật tư	material	Vật liệu
+料号	liao4 hao4	mã vật liệu (P/N)	part number	Vật liệu
+批次	pi1 ci4	lô (Batch/Lot)	batch, lot	Vật liệu
+料带	liao4 dai4	băng liệu (Tape)	carrier tape	Vật liệu
+飞达	fei1 da2	bộ cấp liệu (Feeder)	feeder	Vật liệu
+料仓	liao4 cang1	kho liệu, phễu chứa liệu	magazine, hopper	Vật liệu
+工单	gong1 dan1	lệnh sản xuất (Work order)	work order	Sản xuất
+排产	pai2 chan3	lên kế hoạch sản xuất	production scheduling	Sản xuất
+产能	chan3 neng2	năng lực sản xuất, công suất	capacity	Sản xuất
+产量	chan3 liang4	sản lượng	output, yield quantity	Sản xuất
+节拍	jie2 pai1	nhịp sản xuất (Cycle time)	cycle time, takt	Sản xuất
+稼动率	jia4 dong4 lu:4	tỷ lệ vận hành máy	utilization rate	Sản xuất
+换线	huan4 xian4	chuyển đổi chuyền (Changeover)	line changeover	Sản xuất
+换型	huan4 xing2	đổi mã sản phẩm	model changeover	Sản xuất
+停线	ting2 xian4	dừng chuyền	line stop	Sản xuất
+待料	dai4 liao4	chờ liệu	waiting for material	Sản xuất
+欠料	qian4 liao4	thiếu liệu	material shortage	Sản xuất
+交期	jiao1 qi1	thời hạn giao hàng	delivery date	Sản xuất
+出货	chu1 huo4	xuất hàng	shipment	Sản xuất
+库存	ku4 cun2	tồn kho	inventory	Sản xuất
+仓库	cang1 ku4	kho	warehouse	Sản xuất
+组装	zu3 zhuang1	lắp ráp	assembly	Sản xuất
+包装	bao1 zhuang1	đóng gói	packaging	Sản xuất
+测试	ce4 shi4	kiểm thử (Test)	test	Sản xuất
+老化	lao3 hua4	lão hóa (Burn-in)	aging, burn-in	Sản xuất
+贴膜	tie1 mo2	dán màng	film laminating	Sản xuất
+撕膜	si1 mo2	bóc màng	film peeling	Sản xuất
+镭雕	lei2 diao1	khắc laser	laser engraving	Sản xuất
+打标	da3 biao1	khắc/in mã lên sản phẩm (Marking)	marking	Sản xuất
+激光	ji1 guang1	laser	laser	Sản xuất
+点胶	dian3 jiao1	tra keo, bơm keo (Dispensing)	dispensing	Sản xuất
+固化	gu4 hua4	đóng rắn, sấy keo (Curing)	curing	Sản xuất
+焊接	han4 jie1	hàn	welding, soldering	Sản xuất
+锡膏	xi1 gao1	kem hàn	solder paste	SMT
+回流焊	hui2 liu2 han4	lò hàn reflow	reflow soldering	SMT
+波峰焊	bo1 feng1 han4	hàn sóng	wave soldering	SMT
+贴片机	tie1 pian4 ji1	máy gắp đặt linh kiện SMT	pick-and-place machine	SMT
+钢网	gang1 wang3	khuôn in kem hàn (Stencil)	stencil	SMT
+虚焊	xu1 han4	hàn giả, hàn không ăn	cold solder joint	SMT
+连锡	lian2 xi1	chập thiếc (Bridge)	solder bridge	SMT
+少锡	shao3 xi1	thiếu thiếc	insufficient solder	SMT
+锡珠	xi1 zhu1	bi thiếc	solder ball	SMT
+立碑	li4 bei1	linh kiện dựng đứng (Tombstone)	tombstoning	SMT
+偏位	pian1 wei4	lệch vị trí	misalignment	SMT
+元件	yuan2 jian4	linh kiện	component	SMT
+保养	bao3 yang3	bảo dưỡng	maintenance	Bảo trì
+维修	wei2 xiu1	sửa chữa	repair	Bảo trì
+点检	dian3 jian3	kiểm tra định kỳ theo checklist	routine check	Bảo trì
+更换	geng1 huan4	thay thế	replace	Bảo trì
+备件	bei4 jian4	phụ tùng dự phòng	spare part	Bảo trì
+易损件	yi4 sun3 jian4	linh kiện hao mòn	wear part	Bảo trì
+润滑	run4 hua2	bôi trơn	lubricate	Bảo trì
+紧固	jin3 gu4	siết chặt	tighten	Bảo trì
+松动	song1 dong4	lỏng, bị lỏng	loose	Bảo trì
+磨损	mo2 sun3	mài mòn	wear	Bảo trì
+组长	zu3 zhang3	tổ trưởng	team leader	Nhân sự
+线长	xian4 zhang3	chuyền trưởng	line leader	Nhân sự
+课长	ke4 zhang3	trưởng bộ phận	section manager	Nhân sự
+主管	zhu3 guan3	chủ quản, quản lý trực tiếp	supervisor	Nhân sự
+经理	jing1 li3	giám đốc bộ phận, quản lý	manager	Nhân sự
+厂长	chang3 zhang3	giám đốc nhà máy	plant manager	Nhân sự
+作业员	zuo4 ye4 yuan2	công nhân thao tác	operator	Nhân sự
+技术员	ji4 shu4 yuan2	kỹ thuật viên	technician	Nhân sự
+工程师	gong1 cheng2 shi1	kỹ sư	engineer	Nhân sự
+白班	bai2 ban1	ca ngày	day shift	Nhân sự
+夜班	ye4 ban1	ca đêm	night shift	Nhân sự
+交接班	jiao1 jie1 ban1	giao ca	shift handover	Nhân sự
+加班	jia1 ban1	tăng ca	overtime	Nhân sự
+请假	qing3 jia4	xin nghỉ	ask for leave	Nhân sự
+早会	zao3 hui4	họp đầu ca	morning meeting	Nhân sự
+作业指导书	zuo4 ye4 zhi3 dao3 shu1	hướng dẫn công việc (WI/SOP)	work instruction (WI/SOP)	Nhân sự
+改善	gai3 shan4	cải tiến	improvement (kaizen)	Nhân sự
+稽核	ji1 he2	đánh giá, kiểm toán nội bộ (Audit)	audit	Nhân sự
+温度	wen1 du4	nhiệt độ	temperature	Đo lường
+湿度	shi1 du4	độ ẩm	humidity	Đo lường
+压力	ya1 li4	áp lực, áp suất	pressure	Đo lường
+流量	liu2 liang4	lưu lượng	flow rate	Đo lường

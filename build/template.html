@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Từ điển Xưởng</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2330; --muted:#6b7280; --line:#e3e6eb;
+  --accent:#1f6feb; --accent-soft:#e8f0fe; --py:#c2410c; --hv:#1d4ed8; --gl:#fff7e0; --gl-line:#f2c94c;
+  --chip:#eef1f5; --ok:#15803d;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14171c; --panel:#1c2027; --ink:#e6e8ec; --muted:#9aa3af; --line:#2c323c;
+    --accent:#5b9dff; --accent-soft:#1e2a3d; --py:#fb923c; --hv:#93c5fd; --gl:#2d2716; --gl-line:#8a6d1a;
+    --chip:#262b33; --ok:#4ade80;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171c; --panel:#1c2027; --ink:#e6e8ec; --muted:#9aa3af; --line:#2c323c;
+  --accent:#5b9dff; --accent-soft:#1e2a3d; --py:#fb923c; --hv:#93c5fd; --gl:#2d2716; --gl-line:#8a6d1a;
+  --chip:#262b33; --ok:#4ade80;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Segoe UI",system-ui,"Microsoft YaHei","Yu Gothic UI","Malgun Gothic","PingFang SC",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--panel);border-bottom:1px solid var(--line)}
+.bar{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:700;font-size:18px;margin-right:8px}
+.tabs{display:flex;gap:4px}
+.tab{border:0;background:none;color:var(--muted);padding:8px 12px;border-radius:8px;font:inherit;cursor:pointer}
+.tab.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.spacer{flex:1}
+.iconbtn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit}
+main{max-width:1100px;margin:0 auto;padding:16px}
+.search{display:flex;gap:8px;align-items:stretch}
+textarea#q{flex:1;min-height:52px;max-height:220px;resize:vertical;font:22px/1.4 "Segoe UI","Microsoft YaHei","Yu Gothic UI","Malgun Gothic",sans-serif;padding:10px 14px;border:2px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}
+textarea#q:focus{outline:none;border-color:var(--accent)}
+.btn{border:0;background:var(--accent);color:#fff;border-radius:10px;padding:0 18px;font:600 16px "Segoe UI",sans-serif;cursor:pointer}
+.btn.ghost{background:var(--chip);color:var(--ink)}
+.hint{color:var(--muted);font-size:13px;margin:6px 2px 0}
+.hist{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.hist button{border:0;background:var(--chip);color:var(--ink);border-radius:999px;padding:3px 10px;cursor:pointer;font:inherit;font-size:14px}
+.status{color:var(--muted);padding:40px 0;text-align:center}
+section.blk{margin-top:18px}
+h2{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.seg{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.chip{display:flex;flex-direction:column;align-items:center;border:1px solid var(--line);border-radius:8px;padding:4px 8px;cursor:pointer;background:var(--panel);min-width:40px}
+.chip:hover{border-color:var(--accent)}
+.chip .p{font-size:12px;color:var(--py)}
+.chip .w{font-size:24px;line-height:1.2}
+.chip .g{font-size:12px;color:var(--muted);max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip.miss .w{color:var(--muted)}
+.chip.gl{border-color:var(--gl-line);background:var(--gl)}
+.plain{font-size:22px;color:var(--muted);padding:0 2px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.card.target{box-shadow:0 0 0 2px var(--accent)}
+.hw{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.hw .w{font-size:30px;font-weight:600}
+.hw .t{color:var(--muted);font-size:20px}
+.hw .p{color:var(--py);font-size:18px}
+.hw .hv{color:var(--hv);font-size:15px}
+.say{border:0;background:none;cursor:pointer;font-size:18px;padding:0 4px}
+.glbox{background:var(--gl);border:1px solid var(--gl-line);border-radius:8px;padding:8px 10px;margin-top:8px}
+.glbox .tag{font-size:12px;font-weight:700;color:var(--muted);margin-right:6px}
+.glbox .terms{margin-top:2px;font-size:14px}
+.lang{display:grid;grid-template-columns:34px 1fr;gap:4px 8px;margin-top:8px}
+.lang .l{font-size:12px;font-weight:700;color:var(--muted);padding-top:3px}
+.lang ol{margin:0;padding-left:20px}
+.sub{color:var(--muted);font-size:13px}
+.ent+.ent{border-top:1px dashed var(--line);margin-top:10px;padding-top:10px}
+.parts{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.part{margin-top:6px}
+.part .pw{font-size:20px;font-weight:600;cursor:pointer}
+.part .pw:hover{color:var(--accent)}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px}
+.li{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;overflow:hidden}
+.li:hover{border-color:var(--accent)}
+.li b{font-size:18px;font-weight:600}
+.li .p{color:var(--py);font-size:13px;margin-left:6px}
+.li .d{color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.envi .ipa{color:var(--py)}
+.envi .pos{font-weight:700;margin-top:8px}
+.envi .sec{font-weight:700;color:var(--hv);margin-top:10px}
+.envi .idiom{font-weight:600;margin-top:6px}
+.envi ul{margin:2px 0;padding-left:20px}
+.envi .ex{color:var(--muted);font-style:italic;list-style:none;margin-left:-4px}
+.sugg{display:flex;flex-wrap:wrap;gap:6px}
+.sugg button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:2px 10px;cursor:pointer;font:inherit;font-size:14px}
+.note{font-size:13px;color:var(--muted)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.form input{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.form .row{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--muted);background:var(--bg)}
+td .p{color:var(--py);font-size:13px}
+.mine{color:var(--ok);font-size:12px;font-weight:700}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;align-items:center}
+.tools input[type=search]{flex:1;min-width:200px;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink)}
+.about p,.about li{max-width:820px}
+.langsw{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.langsw button{border:0;background:var(--panel);color:var(--muted);padding:6px 10px;font:inherit;font-size:14px;cursor:pointer}
+.langsw button+button{border-left:1px solid var(--line)}
+.langsw button.on{background:var(--accent);color:#fff;font-weight:600}
+.settings{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.settings label{display:flex;gap:6px;align-items:center;cursor:pointer}
+kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;font-size:13px;background:var(--panel)}
+@media (max-width:640px){ .form{grid-template-columns:1fr} .hw .w{font-size:24px} }
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <span class="brand">📖 <span id="brand">Từ điển Xưởng</span></span>
+  <nav class="tabs">
+    <button class="tab on" data-tab="look" data-i18n="tabLook">Tra từ</button>
+    <button class="tab" data-tab="gloss" data-i18n="tabGloss">Thuật ngữ xưởng</button>
+    <button class="tab" data-tab="about" data-i18n="tabAbout">Hướng dẫn</button>
+  </nav>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="setBtn" data-i18n-title="settings" title="Ngôn ngữ tra" hidden>⚙</button>
+  <div class="langsw" role="group" aria-label="Language" id="langsw"></div>
+  <button class="iconbtn" id="themeBtn" data-i18n-title="theme" title="Đổi giao diện sáng/tối">◐</button>
+</div></header>
+
+<main>
+<div class="settings" id="settings" hidden></div>
+<div id="tab-look">
+  <div class="search">
+    <textarea id="q" rows="1" data-i18n-ph="ph" autofocus></textarea>
+    <button class="btn ghost" id="clearBtn" data-i18n-title="clear">✕</button>
+  </div>
+  <div class="hint" data-i18n-html="hint"></div>
+  <div class="hist" id="hist"></div>
+  <div id="out"><div class="status" id="loading" data-i18n="loading">Đang nạp dữ liệu từ điển…</div></div>
+</div>
+
+<div id="tab-gloss" hidden>
+  <h2 data-i18n="glossH"></h2>
+  <div class="form" id="gform">
+    <input id="f_s" data-i18n-ph="fS">
+    <input id="f_p" data-i18n-ph="fP">
+    <input id="f_j" data-i18n-ph="fJ">
+    <input id="f_k" data-i18n-ph="fK">
+    <input id="f_vi" data-i18n-ph="fVi">
+    <input id="f_en" data-i18n-ph="fEn">
+    <input id="f_g" data-i18n-ph="fG">
+    <div class="row">
+      <button class="btn" id="f_save" style="padding:8px 18px" data-i18n="fSave"></button>
+      <button class="btn ghost" id="f_reset" style="padding:8px 18px" data-i18n="fReset"></button>
+      <span class="note" id="f_msg"></span>
+    </div>
+  </div>
+  <div class="tools">
+    <input type="search" id="gfilter" data-i18n-ph="gFilter">
+    <select id="ggroup" class="iconbtn"></select>
+    <button class="btn ghost" id="g_export" style="padding:8px 14px" data-i18n="gExport"></button>
+    <label class="btn ghost" style="padding:8px 14px;display:inline-flex;align-items:center"><span data-i18n="gImport"></span>
+      <input type="file" id="g_import" accept=".tsv,.txt,.json" hidden></label>
+  </div>
+  <p class="note" data-i18n-html="glossNote"></p>
+  <table><thead id="gthead"></thead><tbody id="gtable"></tbody></table>
+</div>
+
+<div id="tab-about" class="about" hidden>
+  <div id="helpBody"></div>
+  <h2 data-i18n="sources"></h2>
+  <ul class="note" id="srcList">
+    <li data-need="zh">CC-CEDICT — MDBG, CC BY-SA 4.0</li>
+    <li data-need="zh">CVDICT — Phong Phan, CC BY-SA 4.0 (github.com/ph0ngp/CVDICT)</li>
+    <li data-need="ja">JMdict, KANJIDIC2 — Electronic Dictionary Research and Development Group (EDRDG), CC BY-SA 4.0</li>
+    <li data-need="ko">kengdic — Joe Speigle et al., MPL 2.0 / LGPL</li>
+    <li>OVDP — Open Vietnamese Dictionary Project (Anh-Việt, Việt-Anh, Nhật-Việt, Hàn-Việt), GPLv2</li>
+    <li data-need="zh">hanviet-pinyin-wordlist (Phong Phan, MIT), dựa trên Hán Việt tự điển Thiều Chửu</li>
+    <li>Thuật ngữ xưởng / factory terms — tự soạn; bản dịch Nhật/Hàn do AI dịch, cần người bản ngữ kiểm tra</li>
+  </ul>
+  <p class="note" id="stats"></p>
+</div>
+</main>
+
+@@DATA@@
+<script>
+"use strict";
+/* =====================================================================
+   Từ điển Xưởng — một file HTML chạy offline.
+   EDITION.langs: các ngôn ngữ tra có dữ liệu trong file này (zh / ja / ko);
+   tiếng Anh–Việt luôn có. Bản Đa ngữ cho bật/tắt từng ngôn ngữ (chỉ giải nén cái được bật).
+   ===================================================================== */
+const EDITION = /*@@EDITION@@*/;
+const NO_SPEECH = /*@@NO_SPEECH@@*/false;      // bản "KhongLoa": bỏ nút đọc 🔊
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch{ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch{} }
+};
+const HAN = /[\u3400-\u9fff\uf900-\ufaff]/;
+const KANA = /[\u3040-\u30ff\u31f0-\u31ff\uff66-\uff9f]/;
+const HANGUL = /[\uac00-\ud7a3\u1100-\u11ff\u3130-\u318f]/;
+const VNMARK = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i;
+const fold = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D");
+const escRe = x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+function pushMap(m, k, v){ if (!k) return; const a = m.get(k); if (a) a.push(v); else m.set(k, [v]); }
+
+/* ---------------- theme ---------------- */
+(function(){
+  const t0 = store.get("tdx_theme", null);
+  if (t0) document.documentElement.dataset.theme = t0;
+  $("#themeBtn").onclick = () => {
+    const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const nx = cur === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nx; store.set("tdx_theme", nx);
+  };
+})();
+
+/* ---------------- i18n ---------------- */
+const I18N = {
+ vi: {
+  brand:"Từ điển Xưởng", ed_zh:"Trung", ed_ja:"Nhật", ed_ko:"Hàn", ed_all:"Đa ngữ",
+  tabLook:"Tra từ", tabGloss:"Thuật ngữ xưởng", tabAbout:"Hướng dẫn", theme:"Đổi giao diện sáng/tối",
+  ph:"Gõ/dán {langs}, tiếng Anh, tiếng Việt…", clear:"Xóa (Esc)",
+  hint:"Tự nhận ngôn ngữ · Câu được tách thành từng từ · <kbd>Esc</kbd> xóa ô tìm · <kbd>Ctrl</kbd>+<kbd>V</kbd> dán là tra ngay",
+  loading:"Đang nạp dữ liệu từ điển…", oldBrowser:"Trình duyệt quá cũ. Hãy mở file này bằng Microsoft Edge hoặc Google Chrome bản mới.",
+  stats:"Đã nạp: {items} · {gl} thuật ngữ xưởng · {ms} ms", nZh:"{n} mục Trung", nJa:"{n} mục Nhật", nKo:"{n} mục Hàn", nEn:"{n} mục Anh-Việt", nVi:"{n} mục Việt-Anh",
+  notInDict:"Không có trong từ điển.", parts:"Từ điển chung — theo từng thành phần",
+  glTag:"THUẬT NGỮ XƯỞNG", mineTag:"CỦA BẠN", hv:"Hán-Việt", say:"Đọc", reading:"Cách đọc", hanja:"Chữ Hán",
+  seg:"Tách từ", result:"Kết quả", perWord:"Giải nghĩa từng từ", contains:"Từ có chứa “{w}”", lookupEn:"Tra tiếng Anh",
+  notFound:"Không tìm thấy “{q}”.", secGloss:"Thuật ngữ xưởng", envi:"Anh → Việt", vien:"Việt → Anh", lemma:" (dạng gốc: {c})", base:"dạng gốc",
+  byPinyin:"Theo pinyin “{p}”", equiv_zh:"Tiếng Trung tương ứng", equiv_ja:"Tiếng Nhật tương ứng", equiv_ko:"Tiếng Hàn tương ứng",
+  revNote:"Tìm theo nghĩa tiếng Anh và tiếng Việt trong từ điển; bấm vào một từ để xem chi tiết.",
+  jaSection:"Tiếng Nhật (cùng chữ Hán)", viPivot:"nghĩa Việt dịch qua tiếng Anh — chỉ tham khảo",
+  sugg:"Gợi ý", recent:"Gần đây:", lVi:"VI", lEn:"EN", lZh:"中", lJa:"日", lKo:"한",
+  langName_zh:"Tiếng Trung", langName_ja:"Tiếng Nhật", langName_ko:"Tiếng Hàn",
+  glossH:"Thêm / sửa thuật ngữ của xưởng bạn", fS:"Tiếng Trung (vd: 治具)", fP:"Pinyin (bỏ trống = tự điền)",
+  fJ:"Tiếng Nhật (vd: 治具 / ジグ)", fK:"Tiếng Hàn (vd: 지그)", fVi:"Nghĩa tiếng Việt", fEn:"Tiếng Anh (không bắt buộc)", fG:"Nhóm (vd: Khí nén)",
+  fSave:"Lưu thuật ngữ", fReset:"Làm mới form", gFilter:"Lọc danh sách…", allGroups:"Tất cả nhóm",
+  gExport:"⬇ Xuất file (sao lưu)", gImport:"⬆ Nhập file",
+  glossNote:"Thuật ngữ bạn thêm được lưu trong trình duyệt của máy này. Nên <b>Xuất file</b> định kỳ để sao lưu hoặc chép sang máy khác (dùng <b>Nhập file</b>). Thuật ngữ có sẵn (không có nhãn <span class=\"mine\">CỦA BẠN</span>) không xóa được; muốn đổi nghĩa thì thêm lại cùng từ, bản của bạn sẽ được ưu tiên. Bản dịch Nhật/Hàn có sẵn do AI dịch, nên kiểm tra lại.",
+  thZh:"Tiếng Trung", thJa:"Tiếng Nhật", thKo:"Tiếng Hàn", thVi:"Tiếng Việt", thEn:"Tiếng Anh", thG:"Nhóm",
+  edit:"Sửa", del:"Xóa", confirmDel:"Xóa thuật ngữ “{s}”?", needTerm:"Cần nhập ít nhất một từ (Trung/Nhật/Hàn) và nghĩa tiếng Việt.",
+  saved:"Đã lưu “{s}”.", badJson:"File JSON không hợp lệ.", imported:"Đã nhập {n} thuật ngữ.",
+  sources:"Nguồn dữ liệu & giấy phép", settings:"Ngôn ngữ tra", langsTitle:"Ngôn ngữ tra:",
+  langsNote:"Tắt bớt ngôn ngữ không dùng để mở nhanh và nhẹ máy hơn.",
+  help:`<h2>Cách dùng</h2><ul>
+   <li><b>Dán cả câu</b> {langs} (ví dụ thông báo lỗi trên phần mềm máy): công cụ tự tách thành từng từ, hiện cách đọc, âm Hán-Việt, nghĩa Việt và Anh. Bấm vào một từ để xem chi tiết.</li>
+   <li><b>Gõ tiếng Anh hoặc tiếng Việt</b> (có dấu hay không dấu, vd <code>bao duong</code>): hiện nghĩa và <b>từ tương ứng</b> trong {langs}.</li>
+   <li data-need="zh"><b>Pinyin:</b> gõ không dấu, viết liền (vd <code>dianji</code>) khi chỉ nghe mà không biết chữ.</li>
+   <li><b>Thuật ngữ xưởng</b> (khung vàng) luôn hiện trước; tự thêm từ ở tab <i>Thuật ngữ xưởng</i>.</li></ul>
+   <h2>Lưu ý</h2><ul>
+   <li>Chạy hoàn toàn offline, không gửi dữ liệu ra ngoài. Cần Microsoft Edge hoặc Chrome (bản 2020 trở về sau). Chỉ cần chép đúng 1 file .html này.</li>
+   <li>Nghĩa tiếng Việt trong từ điển chung phần lớn dịch bằng máy (qua tiếng Anh) nên có thể sai — khi nghi ngờ hãy xem nghĩa tiếng Anh.</li>
+   <li>Âm Hán-Việt được ghép theo từng chữ, chỉ để tham khảo.</li></ul>`
+ },
+ zh: {
+  brand:"车间词典", ed_zh:"中文", ed_ja:"日文", ed_ko:"韩文", ed_all:"多语",
+  tabLook:"查词", tabGloss:"车间术语", tabAbout:"使用说明", theme:"切换浅色/深色",
+  ph:"输入或粘贴{langs}、英语、越南语…", clear:"清空 (Esc)",
+  hint:"自动识别语言 · 句子自动分词 · <kbd>Esc</kbd> 清空 · <kbd>Ctrl</kbd>+<kbd>V</kbd> 粘贴即查",
+  loading:"正在加载词典数据…", oldBrowser:"浏览器版本过旧，请用新版 Microsoft Edge 或 Google Chrome 打开此文件。",
+  stats:"已加载：{items} · {gl} 条车间术语 · {ms} ms", nZh:"{n} 条中文", nJa:"{n} 条日文", nKo:"{n} 条韩文", nEn:"{n} 条英越", nVi:"{n} 条越英",
+  notInDict:"词典中没有此词。", parts:"通用词典 — 按组成部分",
+  glTag:"车间术语", mineTag:"我的", hv:"汉越音", say:"朗读", reading:"读音", hanja:"汉字",
+  seg:"分词", result:"结果", perWord:"逐词释义", contains:"包含“{w}”的词", lookupEn:"查英文",
+  notFound:"未找到“{q}”。", secGloss:"车间术语", envi:"英 → 越", vien:"越 → 英", lemma:"（原形：{c}）", base:"原形",
+  byPinyin:"按拼音“{p}”", equiv_zh:"对应中文", equiv_ja:"对应日文", equiv_ko:"对应韩文",
+  revNote:"根据词典中的英文和越南语释义查找；点击词语查看详情。",
+  jaSection:"日语（相同汉字）", viPivot:"越南语释义经英语转译，仅供参考",
+  sugg:"联想", recent:"最近：", lVi:"越", lEn:"英", lZh:"中", lJa:"日", lKo:"韩",
+  langName_zh:"中文", langName_ja:"日文", langName_ko:"韩文",
+  glossH:"添加 / 修改您车间的术语", fS:"中文（例：治具）", fP:"拼音（留空自动填写）",
+  fJ:"日文（例：治具 / ジグ）", fK:"韩文（例：지그）", fVi:"越南语释义", fEn:"英文（可选）", fG:"分组（例：气动）",
+  fSave:"保存术语", fReset:"清空表单", gFilter:"筛选列表…", allGroups:"全部分组",
+  gExport:"⬇ 导出文件（备份）", gImport:"⬆ 导入文件",
+  glossNote:"您添加的术语保存在本机浏览器中。请定期<b>导出文件</b>备份，或复制到其他电脑（用<b>导入文件</b>）。内置术语（没有<span class=\"mine\">我的</span>标签）不能删除；如需修改释义，请用相同词语重新添加，您的版本优先显示。内置日文/韩文译文为 AI 翻译，请核对。",
+  thZh:"中文", thJa:"日文", thKo:"韩文", thVi:"越南语", thEn:"英语", thG:"分组",
+  edit:"修改", del:"删除", confirmDel:"删除术语“{s}”？", needTerm:"请至少填写一个词（中/日/韩）和越南语释义。",
+  saved:"已保存“{s}”。", badJson:"JSON 文件无效。", imported:"已导入 {n} 条术语。",
+  sources:"数据来源与许可", settings:"查询语言", langsTitle:"查询语言：", langsNote:"关闭不用的语言可加快打开速度。",
+  help:`<h2>使用方法</h2><ul>
+   <li><b>粘贴整句</b>{langs}（例如设备软件的报警信息）：自动分词，显示读音、汉越音、越南语和英文释义。点击词语查看详情。</li>
+   <li><b>输入越南语或英语</b>（越南语可不带声调，例如 <code>bao duong</code>）：显示释义和<b>对应的</b>{langs}词语。</li>
+   <li data-need="zh"><b>拼音：</b>不带声调、连写（例如 <code>dianji</code>）。</li>
+   <li><b>车间术语</b>（黄色框）总是优先显示，可在“车间术语”页面自行添加。</li></ul>
+   <h2>注意</h2><ul><li>完全离线运行，不向外发送数据。需 Microsoft Edge 或 Chrome（2020 年以后版本）。只需复制这一个 .html 文件。</li>
+   <li>通用词典的越南语释义多为机器翻译，可能有误，请参考英文释义。</li></ul>`
+ },
+ en: {
+  brand:"Factory Dictionary", ed_zh:"Chinese", ed_ja:"Japanese", ed_ko:"Korean", ed_all:"Multilingual",
+  tabLook:"Look up", tabGloss:"Factory terms", tabAbout:"Help", theme:"Toggle light/dark",
+  ph:"Type or paste {langs}, English or Vietnamese…", clear:"Clear (Esc)",
+  hint:"Language auto-detected · Sentences are split into words · <kbd>Esc</kbd> clears · <kbd>Ctrl</kbd>+<kbd>V</kbd> paste to look up",
+  loading:"Loading dictionary data…", oldBrowser:"This browser is too old. Please open this file in a recent Microsoft Edge or Google Chrome.",
+  stats:"Loaded: {items} · {gl} factory terms · {ms} ms", nZh:"{n} Chinese", nJa:"{n} Japanese", nKo:"{n} Korean", nEn:"{n} English-Vietnamese", nVi:"{n} Vietnamese-English",
+  notInDict:"Not in the dictionary.", parts:"General dictionary — by component",
+  glTag:"FACTORY TERM", mineTag:"MINE", hv:"Sino-Viet", say:"Read aloud", reading:"Reading", hanja:"Hanja",
+  seg:"Word split", result:"Result", perWord:"Word by word", contains:"Words containing “{w}”", lookupEn:"Look up English",
+  notFound:"No results for “{q}”.", secGloss:"Factory terms", envi:"English → Vietnamese", vien:"Vietnamese → English", lemma:" (base form: {c})", base:"base form",
+  byPinyin:"By pinyin “{p}”", equiv_zh:"Chinese equivalents", equiv_ja:"Japanese equivalents", equiv_ko:"Korean equivalents",
+  revNote:"Matched on the English and Vietnamese meanings in the dictionary; click a word for details.",
+  jaSection:"Japanese (same kanji)", viPivot:"Vietnamese meaning translated via English — reference only",
+  sugg:"Suggestions", recent:"Recent:", lVi:"VI", lEn:"EN", lZh:"ZH", lJa:"JA", lKo:"KO",
+  langName_zh:"Chinese", langName_ja:"Japanese", langName_ko:"Korean",
+  glossH:"Add / edit your factory terms", fS:"Chinese (e.g. 治具)", fP:"Pinyin (blank = auto)",
+  fJ:"Japanese (e.g. 治具 / ジグ)", fK:"Korean (e.g. 지그)", fVi:"Vietnamese meaning", fEn:"English (optional)", fG:"Group (e.g. Pneumatics)",
+  fSave:"Save term", fReset:"Clear form", gFilter:"Filter list…", allGroups:"All groups",
+  gExport:"⬇ Export (backup)", gImport:"⬆ Import file",
+  glossNote:"Terms you add are stored in this computer's browser. <b>Export</b> regularly as a backup or to copy to another PC (use <b>Import</b>). Built-in terms (without the <span class=\"mine\">MINE</span> tag) cannot be deleted; to change a meaning, add the same term again — yours takes priority. Built-in Japanese/Korean translations are AI-made; please verify.",
+  thZh:"Chinese", thJa:"Japanese", thKo:"Korean", thVi:"Vietnamese", thEn:"English", thG:"Group",
+  edit:"Edit", del:"Delete", confirmDel:"Delete term “{s}”?", needTerm:"Enter at least one term (Chinese/Japanese/Korean) and a Vietnamese meaning.",
+  saved:"Saved “{s}”.", badJson:"Invalid JSON file.", imported:"Imported {n} terms.",
+  sources:"Data sources & licences", settings:"Lookup languages", langsTitle:"Lookup languages:", langsNote:"Turn off unused languages to open faster.",
+  help:`<h2>How to use</h2><ul>
+   <li><b>Paste a whole sentence</b> in {langs} (e.g. a machine alarm message): it is split into words with readings, Sino-Vietnamese readings, Vietnamese and English meanings. Click a word for details.</li>
+   <li><b>Type English or Vietnamese</b> (with or without diacritics, e.g. <code>bao duong</code>): shows meanings and the <b>equivalent words</b> in {langs}.</li>
+   <li data-need="zh"><b>Pinyin:</b> type without tones, joined (e.g. <code>dianji</code>).</li>
+   <li><b>Factory terms</b> (yellow boxes) always come first; add your own on the <i>Factory terms</i> tab.</li></ul>
+   <h2>Notes</h2><ul><li>Runs fully offline; nothing is sent anywhere. Needs Microsoft Edge or Chrome (2020 or newer). Only this one .html file is needed.</li>
+   <li>Vietnamese meanings in the general dictionaries are mostly machine-translated (via English) — check the English when in doubt.</li></ul>`
+ },
+ ja: {
+  brand:"工場用辞書", ed_zh:"中国語", ed_ja:"日本語", ed_ko:"韓国語", ed_all:"多言語",
+  tabLook:"検索", tabGloss:"工場用語", tabAbout:"使い方", theme:"ライト/ダーク切替",
+  ph:"{langs}・英語・ベトナム語を入力または貼り付け…", clear:"クリア (Esc)",
+  hint:"言語を自動判別 · 文は単語に分割 · <kbd>Esc</kbd> でクリア · <kbd>Ctrl</kbd>+<kbd>V</kbd> で貼り付けて検索",
+  loading:"辞書データを読み込み中…", oldBrowser:"ブラウザが古すぎます。新しい Microsoft Edge または Google Chrome で開いてください。",
+  stats:"読込：{items} · 工場用語 {gl} 件 · {ms} ms", nZh:"中国語 {n} 件", nJa:"日本語 {n} 件", nKo:"韓国語 {n} 件", nEn:"英越 {n} 件", nVi:"越英 {n} 件",
+  notInDict:"辞書にありません。", parts:"一般辞書 — 構成語ごと",
+  glTag:"工場用語", mineTag:"自分", hv:"漢越音", say:"読み上げ", reading:"読み", hanja:"漢字",
+  seg:"単語分割", result:"結果", perWord:"単語ごとの意味", contains:"「{w}」を含む語", lookupEn:"英語で検索",
+  notFound:"「{q}」は見つかりません。", secGloss:"工場用語", envi:"英 → 越", vien:"越 → 英", lemma:"（原形：{c}）", base:"原形",
+  byPinyin:"ピンイン「{p}」", equiv_zh:"対応する中国語", equiv_ja:"対応する日本語", equiv_ko:"対応する韓国語",
+  revNote:"辞書の英語・ベトナム語の意味から検索。語をクリックすると詳細を表示します。",
+  jaSection:"日本語（同じ漢字）", viPivot:"ベトナム語訳は英語経由の機械翻訳（参考）",
+  sugg:"候補", recent:"最近：", lVi:"越", lEn:"英", lZh:"中", lJa:"日", lKo:"韓",
+  langName_zh:"中国語", langName_ja:"日本語", langName_ko:"韓国語",
+  glossH:"工場用語の追加・編集", fS:"中国語（例：治具）", fP:"ピンイン（空欄＝自動）",
+  fJ:"日本語（例：治具 / ジグ）", fK:"韓国語（例：지그）", fVi:"ベトナム語の意味", fEn:"英語（任意）", fG:"分類（例：空圧）",
+  fSave:"保存", fReset:"クリア", gFilter:"一覧を絞り込み…", allGroups:"すべての分類",
+  gExport:"⬇ エクスポート（バックアップ）", gImport:"⬆ インポート",
+  glossNote:"追加した用語はこのPCのブラウザに保存されます。定期的に<b>エクスポート</b>してバックアップしてください（他のPCへは<b>インポート</b>）。組込み用語（<span class=\"mine\">自分</span>表示なし）は削除できません。意味を変えたい場合は同じ語を追加すると優先表示されます。組込みの日本語/韓国語訳はAI翻訳のため確認してください。",
+  thZh:"中国語", thJa:"日本語", thKo:"韓国語", thVi:"ベトナム語", thEn:"英語", thG:"分類",
+  edit:"編集", del:"削除", confirmDel:"「{s}」を削除しますか？", needTerm:"語（中/日/韓のいずれか）とベトナム語の意味を入力してください。",
+  saved:"「{s}」を保存しました。", badJson:"JSONファイルが不正です。", imported:"{n} 件の用語をインポートしました。",
+  sources:"データの出典とライセンス", settings:"検索言語", langsTitle:"検索言語：", langsNote:"使わない言語をオフにすると起動が速くなります。",
+  help:`<h2>使い方</h2><ul>
+   <li><b>文をそのまま貼り付け</b>（{langs}、例：装置ソフトのアラーム文）：単語に分割し、読み・漢越音・ベトナム語と英語の意味を表示。語をクリックで詳細。</li>
+   <li><b>英語・ベトナム語を入力</b>（声調記号なしでも可。例 <code>bao duong</code>）：意味と{langs}の<b>対応語</b>を表示。</li>
+   <li><b>工場用語</b>（黄色の枠）が常に先頭に表示されます。「工場用語」タブで追加できます。</li></ul>
+   <h2>注意</h2><ul><li>完全オフラインで動作し、データは外部に送信しません。Microsoft Edge または Chrome（2020年以降）が必要。この .html ファイル1つだけで使えます。</li>
+   <li>一般辞書のベトナム語訳は主に英語経由の機械翻訳です。迷ったら英語の意味を確認してください。</li></ul>`
+ },
+ ko: {
+  brand:"공장 용어 사전", ed_zh:"중국어", ed_ja:"일본어", ed_ko:"한국어", ed_all:"다국어",
+  tabLook:"검색", tabGloss:"공장 용어", tabAbout:"사용법", theme:"라이트/다크 전환",
+  ph:"{langs}, 영어, 베트남어를 입력하거나 붙여넣기…", clear:"지우기 (Esc)",
+  hint:"언어 자동 인식 · 문장은 단어로 분리 · <kbd>Esc</kbd> 지우기 · <kbd>Ctrl</kbd>+<kbd>V</kbd> 붙여넣으면 바로 검색",
+  loading:"사전 데이터를 불러오는 중…", oldBrowser:"브라우저가 너무 오래되었습니다. 최신 Microsoft Edge 또는 Google Chrome으로 여십시오.",
+  stats:"불러옴: {items} · 공장 용어 {gl}개 · {ms} ms", nZh:"중국어 {n}개", nJa:"일본어 {n}개", nKo:"한국어 {n}개", nEn:"영-베 {n}개", nVi:"베-영 {n}개",
+  notInDict:"사전에 없습니다.", parts:"일반 사전 — 구성 단어별",
+  glTag:"공장 용어", mineTag:"내 용어", hv:"한월음", say:"읽기", reading:"읽기", hanja:"한자",
+  seg:"단어 분리", result:"결과", perWord:"단어별 뜻", contains:"“{w}” 포함 단어", lookupEn:"영어로 검색",
+  notFound:"“{q}”을(를) 찾을 수 없습니다.", secGloss:"공장 용어", envi:"영 → 베", vien:"베 → 영", lemma:" (기본형: {c})", base:"기본형",
+  byPinyin:"병음 “{p}”", equiv_zh:"대응 중국어", equiv_ja:"대응 일본어", equiv_ko:"대응 한국어",
+  revNote:"사전의 영어·베트남어 뜻으로 검색합니다. 단어를 누르면 자세히 봅니다.",
+  jaSection:"일본어 (같은 한자)", viPivot:"베트남어 뜻은 영어를 거친 기계 번역 (참고용)",
+  sugg:"추천", recent:"최근:", lVi:"베", lEn:"영", lZh:"중", lJa:"일", lKo:"한",
+  langName_zh:"중국어", langName_ja:"일본어", langName_ko:"한국어",
+  glossH:"공장 용어 추가 / 수정", fS:"중국어 (예: 治具)", fP:"병음 (비우면 자동)",
+  fJ:"일본어 (예: 治具 / ジグ)", fK:"한국어 (예: 지그)", fVi:"베트남어 뜻", fEn:"영어 (선택)", fG:"분류 (예: 공압)",
+  fSave:"저장", fReset:"양식 지우기", gFilter:"목록 필터…", allGroups:"모든 분류",
+  gExport:"⬇ 내보내기 (백업)", gImport:"⬆ 가져오기",
+  glossNote:"추가한 용어는 이 PC의 브라우저에 저장됩니다. 정기적으로 <b>내보내기</b>로 백업하거나 다른 PC로 옮기십시오 (<b>가져오기</b>). 기본 용어(<span class=\"mine\">내 용어</span> 표시 없음)는 삭제할 수 없으며, 같은 단어를 다시 추가하면 내 용어가 우선 표시됩니다. 기본 일본어/한국어 번역은 AI 번역이므로 확인하십시오.",
+  thZh:"중국어", thJa:"일본어", thKo:"한국어", thVi:"베트남어", thEn:"영어", thG:"분류",
+  edit:"수정", del:"삭제", confirmDel:"“{s}” 용어를 삭제할까요?", needTerm:"단어(중/일/한 중 하나)와 베트남어 뜻을 입력하십시오.",
+  saved:"“{s}” 저장됨.", badJson:"JSON 파일이 올바르지 않습니다.", imported:"용어 {n}개를 가져왔습니다.",
+  sources:"데이터 출처 및 라이선스", settings:"검색 언어", langsTitle:"검색 언어:", langsNote:"쓰지 않는 언어를 끄면 더 빨리 열립니다.",
+  help:`<h2>사용법</h2><ul>
+   <li><b>문장을 통째로 붙여넣기</b> ({langs}, 예: 장비 소프트웨어 알람): 단어로 나누어 읽기, 한월음, 베트남어·영어 뜻을 보여 줍니다. 단어를 누르면 자세히 봅니다.</li>
+   <li><b>영어나 베트남어 입력</b> (성조 없이도 가능, 예 <code>bao duong</code>): 뜻과 {langs} <b>대응 단어</b>를 보여 줍니다.</li>
+   <li><b>공장 용어</b>(노란 상자)가 항상 먼저 나옵니다. "공장 용어" 탭에서 추가할 수 있습니다.</li></ul>
+   <h2>주의</h2><ul><li>완전히 오프라인으로 동작하며 데이터를 외부로 보내지 않습니다. Microsoft Edge 또는 Chrome(2020년 이후) 필요. 이 .html 파일 하나만 있으면 됩니다.</li>
+   <li>일반 사전의 베트남어 뜻은 대부분 영어를 거친 기계 번역입니다. 의심되면 영어 뜻을 확인하십시오.</li></ul>`
+ }
+};
+// Tên nhóm thuật ngữ (dữ liệu gốc ghi bằng tiếng Việt): [中, EN, 日, 한]
+const GROUPS = {
+  "Phần mềm":["软件界面","Software","ソフト画面","소프트웨어"], "An toàn":["安全","Safety","安全","안전"],
+  "Điện":["电气","Electrical","電気","전기"], "Truyền thông":["通讯","Communication","通信","통신"],
+  "Điều khiển":["控制","Control","制御","제어"], "Chuyển động":["运动控制","Motion","モーション","모션"],
+  "Cơ khí":["机械","Mechanical","機械","기계"], "Vật liệu":["物料","Material","資材","자재"],
+  "Khí nén":["气动","Pneumatics","空圧","공압"], "Cảm biến":["传感器","Sensors","センサー","센서"],
+  "Thị giác":["视觉","Vision","画像処理","비전"], "Chất lượng":["品质","Quality","品質","품질"],
+  "Lỗi":["不良现象","Defects","不良","불량"], "Sản xuất":["生产","Production","生産","생산"], "SMT":["SMT","SMT","SMT","SMT"],
+  "Bảo trì":["保养维修","Maintenance","保全","보전"], "Nhân sự":["人事","People","人事","인사"],
+  "Đo lường":["测量","Measurement","測定","측정"], "Chuyền & trạm":["产线与工站","Line & stations","ライン・ステーション","라인·스테이션"],
+  "Bắt vít":["锁螺丝","Screw fastening","ねじ締め","나사 체결"], "Kiểm tra":["检测","Testing","検査","검사"],
+  "Tra keo":["点胶","Dispensing","ディスペンス","디스펜싱"], "MES":["MES","MES","MES","MES"],
+  "Kiểm tra RF":["射频测试","RF testing","RF試験","RF 시험"], "Hãng":["品牌","Brands","メーカー","제조사"],
+  "Từ chung":["常用词","Common words","一般語","일반어"], "Lập trình":["编程","Programming","プログラミング","프로그래밍"],
+  "Dụng cụ":["工具","Tools","工具","공구"], "Vật tư":["耗材","Consumables","消耗品","소모품"], "Bảo hộ":["劳保用品","PPE","保護具","보호구"]
+};
+const ALL = EDITION.langs;                                   // ngôn ngữ có trong file
+let ACTIVE = (() => {                                        // ngôn ngữ đang bật (bản Đa ngữ cho chọn)
+  const s = store.get("tdx_langs_" + EDITION.name, null);
+  const a = Array.isArray(s) ? s.filter(l => ALL.includes(l)) : [];
+  return a.length ? a : ALL.slice();
+})();
+const on = l => ACTIVE.includes(l);
+const UI_LANGS = ["vi", ...["zh","ja","ko"].filter(l => ALL.includes(l)), "en"];
+let LANG = (() => {
+  const s = store.get("tdx_lang", null); if (s && UI_LANGS.includes(s)) return s;
+  const n = (navigator.language || "").toLowerCase().slice(0, 2);
+  return UI_LANGS.includes(n) && n !== "en" ? n : "vi";       // EN chỉ khi người dùng chọn
+})();
+function t(key, args){
+  let s = (I18N[LANG] && I18N[LANG][key]) ?? I18N.vi[key] ?? key;
+  if (args) for (const k in args) s = s.split("{" + k + "}").join(args[k]);
+  return s;
+}
+const langList = () => ACTIVE.map(l => t("langName_" + l)).join(" / ");
+const groupName = g => { if (!g) return ""; const a = GROUPS[g]; if (!a || LANG === "vi") return g; return a[{zh:0,en:1,ja:2,ko:3}[LANG]] || g; };
+function edKey(){ return ALL.length > 1 ? "ed_all" : "ed_" + ALL[0]; }
+function applyLang(){
+  document.documentElement.lang = {zh:"zh-CN", ja:"ja", ko:"ko"}[LANG] || LANG;
+  document.title = t("brand") + " · " + t(edKey());
+  $("#brand").textContent = t("brand") + " · " + t(edKey());
+  document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
+  document.querySelectorAll("[data-i18n-html]").forEach(el => el.innerHTML = t(el.dataset.i18nHtml));
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => el.placeholder = t(el.dataset.i18nPh, {langs: langList()}));
+  document.querySelectorAll("[data-i18n-title]").forEach(el => el.title = t(el.dataset.i18nTitle));
+  $("#helpBody").innerHTML = t("help", {langs: langList()});
+  document.querySelectorAll("[data-need]").forEach(el => el.hidden = !ALL.includes(el.dataset.need));
+  for (const [id, l] of [["#f_s","zh"],["#f_p","zh"],["#f_j","ja"],["#f_k","ko"]]) $(id).hidden = !ALL.includes(l);
+  $("#langsw").innerHTML = UI_LANGS.map(l => `<button data-lang="${l}" class="${l === LANG ? "on" : ""}">${{vi:"VI",zh:"中文",ja:"日本語",ko:"한국어",en:"EN"}[l]}</button>`).join("");
+  renderSettings();
+}
+$("#langsw").addEventListener("click", e => {
+  const b = e.target.closest("[data-lang]"); if (!b) return;
+  LANG = b.dataset.lang; store.set("tdx_lang", LANG); applyLang();
+  if (READY){ updateStats(); fillGroupSelect(); renderGlossTable(); renderHistory(); lookup($("#q").value); }
+});
+
+/* ---------------- settings (bản Đa ngữ) ---------------- */
+function renderSettings(){
+  if (ALL.length < 2) return;
+  $("#setBtn").hidden = false;
+  $("#settings").innerHTML = `<b>${t("langsTitle")}</b>` + ALL.map(l =>
+    `<label><input type="checkbox" data-lg="${l}" ${on(l) ? "checked" : ""}> ${t("langName_" + l)}</label>`).join("") +
+    `<span class="note">${t("langsNote")}</span>`;
+}
+$("#setBtn").onclick = () => { $("#settings").hidden = !$("#settings").hidden; };
+$("#settings").addEventListener("change", async e => {
+  const c = e.target.closest("[data-lg]"); if (!c) return;
+  const next = ALL.filter(l => l === c.dataset.lg ? c.checked : on(l));
+  if (!next.length){ c.checked = true; return; }               // phải bật ít nhất 1 ngôn ngữ
+  ACTIVE = next; store.set("tdx_langs_" + EDITION.name, ACTIVE);
+  await ensureLoaded(); applyLang(); updateStats(); renderGlossTable(); lookup($("#q").value);
+});
+
+/* ---------------- tabs ---------------- */
+document.querySelectorAll(".tab").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === b));
+  for (const id of ["look","gloss","about"]) $("#tab-" + id).hidden = b.dataset.tab !== id;
+  if (b.dataset.tab === "gloss") renderGlossTable();
+  if (b.dataset.tab === "look") $("#q").focus();
+});
+
+/* ---------------- pinyin ---------------- */
+const MARKS = {a:"āáǎàa",e:"ēéěèe",i:"īíǐìi",o:"ōóǒòo",u:"ūúǔùu","ü":"ǖǘǚǜü"};
+function sylMark(s){
+  const m = /^([A-Za-zü:]+)([1-5])$/.exec(s);
+  if (!m) return s.replace(/u:/g, "ü");
+  const body = m[1].replace(/u:/g, "ü").replace(/U:/g, "Ü"); const tone = +m[2];
+  const low = body.toLowerCase(); let i;
+  if (low.includes("a")) i = low.indexOf("a");
+  else if (low.includes("e")) i = low.indexOf("e");
+  else if (low.includes("ou")) i = low.indexOf("o");
+  else { i = -1; for (let k = 0; k < low.length; k++) if ("aeiouü".includes(low[k])) i = k; }
+  if (i < 0) return body;
+  let mk = MARKS[low[i]][tone - 1]; if (body[i] !== low[i]) mk = mk.toUpperCase();
+  return body.slice(0, i) + mk + body.slice(i + 1);
+}
+const pyMarks = p => p.split(" ").map(sylMark).join(" ");
+const pyPlain = p => p.replace(/u:/g, "v").replace(/[1-5\s]/g, "").toLowerCase();
+
+/* =====================================================================
+   DỮ LIỆU
+   ===================================================================== */
+let READY = false, LOAD_MS = 0;
+const D = {zh:null, ja:null, ko:null};     // mảng dòng của từng ngôn ngữ (null = chưa giải nén)
+const IDX = {zh:new Map(), ja:new Map(), ko:new Map()};
+const PYIDX = new Map();
+const MAXL = {zh:1, ja:1, ko:1};
+let EN = [], ENKEYS = [], ENMAP = new Map(), VI = [], VIKEYS = [], VIMAP = new Map();
+let GL_BASE = [], GL = [];
+const GLI = {zh:new Map(), ja:new Map(), ko:new Map()};
+
+async function unpack(id){
+  const el = document.getElementById(id); if (!el) return "";
+  const bin = atob(el.textContent.trim()); const u = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+  return await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+}
+function loadSorted(text){
+  const lines = text.split("\n"), map = new Map();
+  lines.forEach((ln, i) => { const k = ln.slice(0, ln.indexOf("\t")).toLowerCase(); if (!map.has(k)) map.set(k, i); });
+  return [lines, [...map.keys()].sort(), map];
+}
+async function loadLang(l){
+  if (D[l]) return;
+  const lines = (await unpack("D_" + l)).split("\n");
+  if (l === "zh") lines.forEach((ln, i) => {
+    const a = ln.split("\t", 3);
+    pushMap(IDX.zh, a[0], i); if (a[1] !== a[0]) pushMap(IDX.zh, a[1], i);
+    if (a[0].length > MAXL.zh && a[0].length <= 12) MAXL.zh = a[0].length;
+    pushMap(PYIDX, pyPlain(a[2]), i);
+  });
+  if (l === "ja") lines.forEach((ln, i) => {
+    const a = ln.split("\t", 2);
+    for (const f of (a[0] + "|" + (a[1] || "")).split("|")) if (f){ pushMap(IDX.ja, f, i); if (f.length > MAXL.ja && f.length <= 12) MAXL.ja = f.length; }
+  });
+  if (l === "ko") lines.forEach((ln, i) => {
+    const s = ln.slice(0, ln.indexOf("\t"));
+    pushMap(IDX.ko, s, i); const ns = s.replace(/\s+/g, ""); if (ns !== s) pushMap(IDX.ko, ns, i);
+  });
+  D[l] = lines;
+}
+async function ensureLoaded(){ for (const l of ACTIVE) await loadLang(l); rebuildGloss(); }
+
+async function loadAll(){
+  if (typeof DecompressionStream === "undefined"){ $("#loading").textContent = t("oldBrowser"); return; }
+  const t0 = performance.now();
+  const [en, vi, gl] = await Promise.all(["D_en","D_vi","D_gl"].map(unpack));
+  [EN, ENKEYS, ENMAP] = loadSorted(en);
+  [VI, VIKEYS, VIMAP] = loadSorted(vi);
+  GL_BASE = JSON.parse(gl);
+  for (const id of ["D_en","D_vi","D_gl"]) document.getElementById(id)?.remove();
+  await ensureLoaded();
+  LOAD_MS = Math.round(performance.now() - t0); READY = true;
+  updateStats(); fillGroupSelect();
+  $("#out").innerHTML = ""; renderHistory();
+  const q = $("#q").value.trim(); if (q) lookup(q);
+}
+function updateStats(){
+  const items = [...ACTIVE.filter(l => D[l]).map(l => t("n" + l[0].toUpperCase() + l[1], {n: D[l].length.toLocaleString()})),
+                 t("nEn", {n: EN.length.toLocaleString()}), t("nVi", {n: VI.length.toLocaleString()})].join(" · ");
+  $("#stats").textContent = t("stats", {items, gl: GL.length, ms: LOAD_MS});
+}
+
+/* ---------------- thuật ngữ xưởng ---------------- */
+// mục: {s (Trung giản thể), t (phồn thể), p (pinyin), vi, en, g, j:[Nhật], k:[Hàn], mine}
+const glKey = e => e.s || (e.j && e.j[0] && "ja:" + e.j[0]) || (e.k && e.k[0] && "ko:" + e.k[0]) || "";
+const glHead = (e, l) => l === "zh" ? e.s : ((l === "ja" ? e.j : e.k) || [])[0] || "";
+function userGloss(){ return store.get("tdx_user_gloss", []); }
+function rebuildGloss(){
+  const mine = userGloss().map(e => ({...e, j: e.j || [], k: e.k || [], mine: true}));
+  const keys = new Set(mine.map(glKey));
+  GL = [...mine, ...GL_BASE.filter(e => !keys.has(glKey(e)))]
+        .filter(e => ACTIVE.some(l => glHead(e, l)));          // chỉ giữ thuật ngữ có từ ở ngôn ngữ đang bật
+  for (const l of ["zh","ja","ko"]) GLI[l] = new Map();
+  for (const e of GL){
+    if (e.s){ pushMap(GLI.zh, e.s, e); if (e.t && e.t !== e.s) pushMap(GLI.zh, e.t, e); MAXL.zh = Math.max(MAXL.zh, Math.min(e.s.length, 12)); }
+    for (const w of e.j || []){ pushMap(GLI.ja, w, e); MAXL.ja = Math.max(MAXL.ja, Math.min(w.length, 16)); }
+    for (const w of e.k || []){ pushMap(GLI.ko, w, e); const ns = w.replace(/\s+/g, ""); if (ns !== w) pushMap(GLI.ko, ns, e); }
+  }
+}
+function autoPinyin(s){
+  if (!D.zh) return "";
+  return [...s].map(c => { const ix = IDX.zh.get(c); return ix ? D.zh[ix[0]].split("\t")[2] : ""; }).filter(Boolean).join(" ");
+}
+function autoTrad(s){
+  if (!D.zh) return s;
+  const ix = IDX.zh.get(s); if (ix) return D.zh[ix[0]].split("\t")[1];
+  return [...s].map(c => { const i2 = IDX.zh.get(c); return i2 ? D.zh[i2[0]].split("\t")[1] : c; }).join("");
+}
+
+/* ---------------- đọc mục từ điển ---------------- */
+function zhE(i){ const a = D.zh[i].split("\t"); return {s:a[0], t:a[1], p:a[2], hv:a[3], vi:a[4], en:a[5]}; }
+function jaE(i){ const a = D.ja[i].split("\t"); return {k:a[0] ? a[0].split("|") : [], r:a[1] ? a[1].split("|") : [], en:a[2], vi:a[3], hv:a[4], c:a[5] === "1"}; }
+function koE(i){ const a = D.ko[i].split("\t"); return {s:a[0], h:a[1] ? a[1].split("|") : [], en:a[2], vi:a[3], hv:a[4]}; }
+function zhRank(e){
+  let r = (e.en || e.vi).split("/").length;
+  if (/[A-Z]/.test(e.p)) r -= 100;
+  if (/^(surname|old variant|variant of|used in|see )/i.test(e.en || "")) r -= 50;
+  return r;
+}
+const zhEntries = w => D.zh ? (IDX.zh.get(w) || []).map(zhE).sort((x, y) => zhRank(y) - zhRank(x)) : [];
+const jaEntries = w => D.ja ? (IDX.ja.get(w) || []).map(jaE).sort((x, y) => (y.c - x.c) || (y.k.includes(w) - x.k.includes(w))) : [];
+const koEntries = w => D.ko ? (IDX.ko.get(w) || []).map(koE) : [];
+const head = {zh: w => IDX.zh.has(w) || GLI.zh.has(w), ja: w => IDX.ja.has(w) || GLI.ja.has(w), ko: w => IDX.ko.has(w) || GLI.ko.has(w)};
+
+/* ---------------- phát âm ---------------- */
+let voices = [];
+function loadVoices(){ try{ voices = speechSynthesis.getVoices(); }catch{} }
+if (!NO_SPEECH && "speechSynthesis" in window){ loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+const voiceFor = l => voices.find(v => v.lang.toLowerCase().startsWith(l));
+const sayBtn = (text, l) => !NO_SPEECH && voiceFor(l) ? `<button class="say" title="${t("say")}" data-say="${esc(text)}" data-lang="${l}">🔊</button>` : "";
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-say]"); if (!b) return;
+  const u = new SpeechSynthesisUtterance(b.dataset.say); u.voice = voiceFor(b.dataset.lang); u.lang = u.voice.lang;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+});
+
+/* =====================================================================
+   TÁCH TỪ
+   ===================================================================== */
+/* Trung: so khớp dài nhất xuôi/ngược, chọn cách ít từ & ít chữ đơn hơn */
+function segZh(s, dictOnly){
+  const ok = w => dictOnly ? IDX.zh.has(w) : head.zh(w);
+  const fmm = () => { const o = []; let i = 0; while (i < s.length){ let L = Math.min(MAXL.zh, s.length - i); while (L > 1 && (!ok(s.substr(i, L)) || (dictOnly && L === s.length))) L--; o.push(s.substr(i, L)); i += L; } return o; };
+  const bmm = () => { const o = []; let j = s.length; while (j > 0){ let L = Math.min(MAXL.zh, j); while (L > 1 && (!ok(s.substr(j - L, L)) || (dictOnly && L === s.length))) L--; o.unshift(s.substr(j - L, L)); j -= L; } return o; };
+  const f = fmm(), b = bmm();
+  if (f.length !== b.length) return f.length < b.length ? f : b;
+  const singles = a => a.filter(w => w.length === 1).length;
+  return singles(f) < singles(b) ? f : b;
+}
+
+/* Nhật: đưa động từ / tính từ đã chia về dạng từ điển (luật rút gọn) */
+const JA_ROWS = {u:"うくぐすつぬぶむる", i:"いきぎしちにびみり", a:"わかがさたなばまら", e:"えけげせてねべめれ", o:"おこごそとのぼもろ"};
+const JA_RULES = (() => {
+  const R = [];
+  const add = (suf, rep) => R.push([suf, rep]);
+  for (const e of ["ます","ました","ません","ませんでした","ましょう","たい","たかった","たくない","ながら","なさい","そう"])
+    { for (let k = 0; k < 9; k++) add(JA_ROWS.i[k] + e, JA_ROWS.u[k]); add(e, "る"); }
+  for (const e of ["ない","なかった","なくて","ず","れる","れた","せる","せた"]) { for (let k = 0; k < 9; k++) add(JA_ROWS.a[k] + e, JA_ROWS.u[k]); }
+  for (const e of ["ない","なかった","なくて","られる","られた","させる","させた","よう"]) add(e, "る");
+  for (let k = 0; k < 9; k++){ add(JA_ROWS.e[k] + "ば", JA_ROWS.u[k]); add(JA_ROWS.o[k] + "う", JA_ROWS.u[k]); add(JA_ROWS.e[k] + "る", JA_ROWS.u[k]); }
+  for (const [te, u] of [["って","う"],["って","つ"],["って","る"],["いて","く"],["いで","ぐ"],["して","す"],["んで","ぬ"],["んで","ぶ"],["んで","む"],["って","く"],["て","る"]]){
+    add(te, u); add(te.replace(/て$/, "た").replace(/で$/, "だ"), u);
+  }
+  for (const e of ["ている","ていた","ています","ていました","てる","てた","ておく","てある","てしまう","てください","て下さい"]) add(e, "て");
+  for (const e of ["でいる","でいた","でいます","でください"]) add(e, "で");
+  for (const [s2, r2] of [["した","する"],["して","する"],["します","する"],["しました","する"],["しません","する"],["しない","する"],["しよう","する"],["される","する"],["させる","する"],["できる","する"],["できます","する"],["すれば","する"],["しています","する"],["している","する"],
+                          ["来た","来る"],["来て","来る"],["来ます","来る"],["来ない","来る"],["きた","くる"],["きて","くる"],["きます","くる"],["こない","くる"]]) add(s2, r2);
+  for (const e of ["かった","くない","くなかった","くて","く","ければ","さ","そう"]) add(e, "い");
+  for (const e of ["する","です","でした","だ","である","でない","ではない","中","済み"]) add(e, "");   // danh từ + する/です…
+  return R.sort((x, y) => y[0].length - x[0].length);
+})();
+function deinflect(w){
+  const out = [], seen = new Set([w]); let cur = [w];
+  for (let depth = 0; depth < 3 && cur.length; depth++){
+    const nx = [];
+    for (const f of cur) for (const [suf, rep] of JA_RULES){
+      if (f.length > suf.length && f.endsWith(suf)){
+        const c = f.slice(0, -suf.length) + rep;
+        if (!seen.has(c)){ seen.add(c); nx.push(c); out.push(c); }
+      }
+    }
+    cur = nx;
+  }
+  return out;
+}
+/* Nhật: so khớp dài nhất, thử chia ngược khi không có dạng nguyên */
+function segJa(s, dictOnly){
+  const ok = w => dictOnly ? IDX.ja.has(w) : head.ja(w);
+  const out = []; let i = 0;
+  while (i < s.length){
+    const ch = s[i];
+    if (!HAN.test(ch) && !KANA.test(ch)){ out.push({t:"x", s:ch}); i++; continue; }
+    let got = null;
+    for (let L = Math.min(Math.max(MAXL.ja, 8), s.length - i); L >= 1; L--){
+      const sub = s.substr(i, L);
+      if (dictOnly && L === s.length) continue;
+      if (ok(sub)){ got = {t:"w", s:sub, b:sub}; break; }
+      if (L >= 2 && KANA.test(sub[L - 1])){
+        const base = deinflect(sub).find(ok);
+        if (base){ got = {t:"w", s:sub, b:base}; break; }
+      }
+    }
+    if (!got) got = {t:"w", s:ch, b:ch};
+    out.push(got); i += got.s.length;
+  }
+  return out;
+}
+/* Trợ từ tiếng Nhật: không tra từ điển (tránh khớp nhầm が → 画), chỉ ghi chú chức năng */
+const JA_PART = {"の":"của (sở hữu) · possessive","が":"(chủ ngữ) · subject marker","を":"(tân ngữ) · object marker","に":"ở, vào, đến · at / to","へ":"về phía · toward",
+  "で":"tại, bằng · at / by means of","と":"và, với · and / with","は":"(chủ đề) · topic marker","も":"cũng · also","から":"từ; vì · from / because",
+  "まで":"đến · until / up to","より":"hơn; từ · than / from","や":"và (liệt kê) · and (listing)","か":"(câu hỏi) · question / or","ね":"nhỉ · sentence-ending","よ":"đấy · sentence-ending"};
+function markJaParticles(tokens){
+  for (const tk of tokens) if (tk.t === "w" && tk.s === tk.b && JA_PART[tk.s] && !GLI.ja.has(tk.s)) tk.t = "part";
+  return tokens;
+}
+function jaReading(w){
+  const e = jaEntries(w)[0]; if (e && e.r.length) return e.r[0];
+  if (!D.ja || !HAN.test(w)) return "";
+  const parts = segJa(w, true).filter(p => p.t === "w");
+  if (parts.length < 2) return "";
+  const rs = parts.map(p => { const x = jaEntries(p.b)[0]; return x && x.r[0] ? x.r[0] : (KANA.test(p.s) ? p.s : "?"); });
+  return rs.includes("?") ? "" : rs.join("");
+}
+
+/* Hàn: tách theo dấu cách, gộp cụm nhiều từ có trong từ điển, bỏ tiểu từ / đuôi động từ */
+const KO_ENDS = ["하십시오","하세요","합니다","했습니다","하였습니다","했다","하였다","하고","하는","하여","해서","하면","하지","한다","할","한","함","해요","해","하다",
+  "되었습니다","되었다","되어","됩니다","되면","되는","되지","된다","된","될","되다","돼",
+  "렸습니다","렸다","렸어요","졌습니다","졌다","졌어요","겼습니다","겼다","었어요","았어요","였습니다","였다","습니다","입니다","이에요","예요","이다","이고","이며","이나","이면","였습니다","었습니다","았습니다","었다","았다","는다","니다",
+  "에서는","에서","에게서","에게","께서","으로는","으로","로는","로","에는","에도","에","은","는","이","가","을","를","의","와","과","도","만","까지","부터","보다","처럼","나","고","며","면","지만","지","다","중","시","후","전"]
+  .sort((a, b) => b.length - a.length);
+// tiểu từ (sau danh từ) — các đuôi còn lại coi là đuôi động từ/tính từ
+const KO_PARTICLES = new Set(["에서는","에서","에게서","에게","께서","으로는","으로","로는","로","에는","에도","에","은","는","이","가","을","를","의","와","과","도","만","까지","부터","보다","처럼","나","중","시","후","전","이나","이면","이며","이고","이다","입니다","이에요","예요"]);
+function koBase(w, ok){
+  if (ok(w)) return w;
+  const all = [];
+  for (const e of KO_ENDS){
+    if (w.length > e.length && w.endsWith(e)){
+      const st = w.slice(0, -e.length);
+      // đuôi động từ (열렸습니다 → 열다): thử dạng "…다" trước; tiểu từ (안전문이 → 안전문): thử danh từ trước
+      all.push(...(KO_PARTICLES.has(e) ? [st, st + "하다", st + "다", st + "되다"] : [st + "다", st + "하다", st + "되다", st]));
+    }
+  }
+  // ưu tiên dạng có trong thuật ngữ xưởng (확인하십시오 → 확인), sau đó mới tới từ điển chung
+  return all.find(c => GLI.ko.has(c) && ok(c)) || all.find(ok) || null;
+}
+function segKo(s){
+  const parts = s.split(/(\s+|[.,!?;:()\[\]{}"'“”‘’、。，：；！？…·\/\-]+)/).filter(x => x !== "");
+  const out = [];
+  for (let i = 0; i < parts.length; i++){
+    const p = parts[i];
+    if (!HANGUL.test(p)){ out.push({t:"x", s:p}); continue; }
+    let got = null;
+    // cụm 2–3 từ (vd "원점 복귀"): thử cả có dấu cách và viết liền
+    for (let n = 3; n >= 2 && !got; n--){
+      const seq = []; let j = i;
+      while (seq.length < n && j < parts.length){ if (HANGUL.test(parts[j])) seq.push(parts[j]); else if (!/^\s+$/.test(parts[j])) break; j++; }
+      if (seq.length < n) continue;
+      for (const cand of [seq.join(" "), seq.join("")]){
+        const b = koBase(cand, head.ko);
+        if (b){ got = {t:"w", s:parts.slice(i, j).join(""), b}; i = j - 1; break; }
+      }
+    }
+    if (!got){ const b = koBase(p, head.ko); got = {t:"w", s:p, b: b || p}; }
+    out.push(got);
+  }
+  return out;
+}
+
+/* =====================================================================
+   HIỂN THỊ
+   ===================================================================== */
+const defList = s => { const d = (s || "").split("/").filter(Boolean); return d.length ? "<ol>" + d.map(x => `<li>${esc(x)}</li>`).join("") + "</ol>" : ""; };
+const shortDefs = (d, n) => d ? d.split("/").filter(Boolean).slice(0, n).join("; ") : "";
+const LBL = l => t("l" + l[0].toUpperCase() + l[1]);
+
+function glTerms(e, except){
+  return ACTIVE.filter(l => l !== except && glHead(e, l)).map(l =>
+    `<span class="sub">${LBL(l)}:</span> ${esc(l === "zh" ? e.s : (l === "ja" ? e.j : e.k).join(" / "))}`).join(" · ");
+}
+function glBox(e, l){
+  const terms = glTerms(e, l);
+  return `<div class="glbox"><span class="tag">${t("glTag")}${e.mine ? " · " + t("mineTag") : ""}</span>
+    <b>${esc(e.vi)}</b>${e.en ? ` <span class="sub">· ${esc(e.en)}</span>` : ""}${e.g ? ` <span class="sub">· ${esc(groupName(e.g))}</span>` : ""}
+    ${terms ? `<div class="terms">${terms}</div>` : ""}</div>`;
+}
+function liGl(e){
+  const l = ACTIVE.find(x => glHead(e, x)) || "zh";
+  const hw = glHead(e, l);
+  const sub = l === "zh" && e.p ? pyMarks(e.p) : (l === "ja" && e.j[1] ? e.j[1] : "");
+  const other = ACTIVE.filter(x => x !== l && glHead(e, x)).map(x => glHead(e, x)).join(" · ");
+  return `<div class="li" data-q="${esc(hw)}" style="background:var(--gl);border-color:var(--gl-line)"><b>${esc(hw)}</b><span class="p">${esc(sub)}</span>
+    <div class="d">${esc(e.vi)}${e.en ? " · " + esc(e.en) : ""}${other ? " · " + esc(other) : ""}</div></div>`;
+}
+const liZh = i => { const e = zhE(i); return `<div class="li" data-q="${esc(e.s)}"><b>${esc(e.s)}</b><span class="p">${esc(pyMarks(e.p))}</span><div class="d">${esc(shortDefs(e.vi || e.en, 2))}</div></div>`; };
+const liJa = i => { const e = jaE(i); const w = e.k[0] || e.r[0]; return `<div class="li" data-q="${esc(w)}"><b>${esc(w)}</b><span class="p">${esc(e.k.length ? e.r[0] || "" : "")}</span><div class="d">${esc(shortDefs(e.vi || e.en, 2))}</div></div>`; };
+const liKo = i => { const e = koE(i); return `<div class="li" data-q="${esc(e.s)}"><b>${esc(e.s)}</b><span class="p">${esc(e.h[0] || "")}</span><div class="d">${esc(shortDefs(e.vi || e.en, 2))}</div></div>`; };
+const LI = {zh: liZh, ja: liJa, ko: liKo};
+
+function langRows(vi, en, pivot){
+  let h = `<div class="lang">`;
+  if (vi) h += `<span class="l">${t("lVi")}</span><div>${defList(vi)}${pivot ? `<div class="sub">${t("viPivot")}</div>` : ""}</div>`;
+  if (en) h += `<span class="l">${t("lEn")}</span><div>${defList(en)}</div>`;
+  return h + `</div>`;
+}
+function partsBlock(parts, entriesOf, readingOf){
+  if (parts.length < 2) return "";
+  let h = `<div class="ent parts"><div class="sub" style="font-weight:600">${t("parts")}</div>`;
+  for (const p of parts){
+    const e = entriesOf(p)[0];
+    h += `<div class="part"><span class="pw" data-q="${esc(p)}">${esc(p)}</span>`;
+    if (!e){ h += ` <span class="sub">${t("notInDict")}</span></div>`; continue; }
+    const rd = readingOf(e);
+    h += `${rd ? ` <span class="p">${esc(rd)}</span>` : ""}${e.hv ? ` <span class="hv">${t("hv")}: ${esc(e.hv)}</span>` : ""}`;
+    h += `<div class="lang">${e.vi ? `<span class="l">${t("lVi")}</span><div>${esc(shortDefs(e.vi, 4))}</div>` : ""}${e.en ? `<span class="l">${t("lEn")}</span><div>${esc(shortDefs(e.en, 4))}</div>` : ""}</div></div>`;
+  }
+  return h + `</div>`;
+}
+
+/* ---- thẻ Trung ---- */
+function zhCard(w, id){
+  const gl = GLI.zh.get(w) || [], ents = zhEntries(w);
+  if (!gl.length && !ents.length) return `<div class="card" id="${id}"><div class="hw"><span class="w">${esc(w)}</span></div><div class="sub">${t("notInDict")}</div></div>`;
+  const top = ents[0] || {s:w, t:gl[0].t || w};
+  let h = `<div class="card" id="${id}"><div class="hw"><span class="w">${esc(top.s)}</span>${top.t && top.t !== top.s ? `<span class="t">${esc(top.t)}</span>` : ""}${sayBtn(top.s, "zh")}</div>`;
+  for (const e of gl) h += glBox(e, "zh");
+  if (!ents.length && gl[0].p) h += `<div class="hw" style="margin-top:6px"><span class="p">${esc(pyMarks(gl[0].p))}</span></div>`;
+  for (const e of ents) h += `<div class="ent"><div class="hw"><span class="p">${esc(pyMarks(e.p))}</span>${e.hv ? `<span class="hv">${t("hv")}: ${esc(e.hv)}</span>` : ""}</div>${langRows(e.vi, e.en)}</div>`;
+  if (gl.length && !ents.length && w.length > 1) h += partsBlock(segZh(w, true), zhEntries, e => pyMarks(e.p));
+  return h + `</div>`;
+}
+/* ---- thẻ Nhật ---- */
+function jaCard(w, id, surface){
+  const gl = GLI.ja.get(w) || [], ents = jaEntries(w).slice(0, 4);
+  const shown = surface && surface !== w ? `${esc(surface)} <span class="sub">→ ${t("base")}: ${esc(w)}</span>` : esc(w);
+  if (!gl.length && !ents.length) return `<div class="card" id="${id}"><div class="hw"><span class="w">${shown}</span></div><div class="sub">${t("notInDict")}</div></div>`;
+  const rd = jaReading(w);
+  let h = `<div class="card" id="${id}"><div class="hw"><span class="w">${shown}</span>${rd && rd !== w ? `<span class="p">${esc(rd)}</span>` : ""}${sayBtn(w, "ja")}</div>`;
+  for (const e of gl) h += glBox(e, "ja");
+  for (const e of ents){
+    const forms = [...e.k, ...e.r].filter(f => f !== w);
+    h += `<div class="ent"><div class="hw">${e.r[0] ? `<span class="p">${esc(e.r.join("・"))}</span>` : ""}${e.hv ? `<span class="hv">${t("hv")}: ${esc(e.hv)}</span>` : ""}${forms.length ? `<span class="sub">${esc(forms.slice(0, 4).join("、"))}</span>` : ""}</div>${langRows(e.vi, e.en, !!e.vi)}</div>`;
+  }
+  if (gl.length && !ents.length && w.length > 1)
+    h += partsBlock(segJa(w, true).filter(p => p.t === "w").map(p => p.b), jaEntries, e => e.r[0] || "");
+  return h + `</div>`;
+}
+/* ---- thẻ Hàn ---- */
+function koCard(w, id, surface){
+  const gl = GLI.ko.get(w) || GLI.ko.get(w.replace(/\s+/g, "")) || [], ents = koEntries(w).concat(w.includes(" ") ? koEntries(w.replace(/\s+/g, "")) : []).slice(0, 4);
+  const shown = surface && surface !== w ? `${esc(surface)} <span class="sub">→ ${t("base")}: ${esc(w)}</span>` : esc(w);
+  if (!gl.length && !ents.length) return `<div class="card" id="${id}"><div class="hw"><span class="w">${shown}</span></div><div class="sub">${t("notInDict")}</div></div>`;
+  let h = `<div class="card" id="${id}"><div class="hw"><span class="w">${shown}</span>${sayBtn(w, "ko")}</div>`;
+  for (const e of gl) h += glBox(e, "ko");
+  for (const e of ents)
+    h += `<div class="ent"><div class="hw">${e.h.length ? `<span class="t">${esc(e.h.join(" · "))}</span>` : ""}${e.hv ? `<span class="hv">${t("hv")}: ${esc(e.hv)}</span>` : ""}</div>${langRows(e.vi, e.en, !!e.vi)}</div>`;
+  if (gl.length && !ents.length){
+    const ps = w.includes(" ") ? w.split(/\s+/) : [];
+    if (ps.length > 1) h += partsBlock(ps.map(p => koBase(p, x => IDX.ko.has(x)) || p), koEntries, e => e.h[0] || "");
+  }
+  return h + `</div>`;
+}
+
+/* ---- chip dòng tách từ ---- */
+function chip(word, base, l, n){
+  const known = head[l](base), g = GLI[l].get(base);
+  let rd = "", gloss = "";
+  if (l === "zh"){ rd = g && g[0].p ? pyMarks(g[0].p) : (zhEntries(base)[0] ? pyMarks(zhEntries(base)[0].p) : ""); }
+  if (l === "ja"){ rd = KANA.test(word) && !HAN.test(word) ? "" : jaReading(base); }
+  if (l === "ko"){ const e = koEntries(base)[0]; rd = e && e.h[0] ? e.h[0] : ""; }
+  if (g) gloss = g[0].vi;
+  else {
+    const e = l === "zh" ? zhEntries(base)[0] : l === "ja" ? jaEntries(base)[0] : koEntries(base)[0];
+    gloss = e ? shortDefs(e.vi || e.en, 1) : "";
+  }
+  return `<div class="chip${known ? "" : " miss"}${g ? " gl" : ""}" data-jump="${l}${n}"><span class="p">${esc(rd)}</span><span class="w">${esc(word)}</span><span class="g">${esc(gloss)}</span></div>`;
+}
+function enShort(w){
+  for (const c of lemmaCandidates(w.toLowerCase())){
+    const i = ENMAP.get(c);
+    if (i !== undefined){ const m = /\n-\s*([^\n]+)/.exec(EN[i].split("\t")[1].replace(/\\n/g, "\n")); if (m) return m[1]; }
+  }
+  return "";
+}
+
+/* ---- tra theo ngôn ngữ ---- */
+function renderSeg(tokens, l, cardFn){
+  // tokens: [{t:"w"|"lat"|"x", s, b}]
+  const words = tokens.filter(x => x.t === "w");
+  const single = words.length === 1 && tokens.filter(x => x.t !== "x" || x.s.trim()).length === 1;
+  let h = "";
+  if (!single){
+    h += `<section class="blk"><h2>${t("seg")}</h2><div class="seg">`;
+    let n = 0;
+    for (const tk of tokens){
+      if (tk.t === "w") h += chip(tk.s, tk.b, l, n++);
+      else if (tk.t === "part") h += `<div class="chip" style="border-style:dashed"><span class="p"></span><span class="w">${esc(tk.s)}</span><span class="g">${esc(JA_PART[tk.s].split(" · ")[LANG === "vi" ? 0 : 1])}</span></div>`;
+      else if (tk.t === "lat") h += `<div class="chip" data-q="${esc(tk.s)}" title="${t("lookupEn")}"><span class="p">EN</span><span class="w" style="font-size:18px">${esc(tk.s)}</span><span class="g">${esc(enShort(tk.s))}</span></div>`;
+      else if (tk.s === "\n") h += `<div style="flex-basis:100%"></div>`;
+      else if (tk.s.trim()) h += `<span class="plain">${esc(tk.s)}</span>`;
+    }
+    h += `</div></section>`;
+  }
+  h += `<section class="blk"><h2>${single ? t("result") : t("perWord")}</h2>`;
+  const seen = new Set(); let n = 0;
+  for (const tk of words){ const id = l + n++; if (seen.has(tk.b)) continue; seen.add(tk.b); h += cardFn(tk.b, id, tk.s); }
+  h += `</section>`;
+  return {h, single, words};
+}
+function tokZh(text){
+  const toks = []; const re = /([\u3400-\u9fff\uf900-\ufaff]+)|([A-Za-z][A-Za-z'\-]*)|([\s\S])/g; let m;
+  while ((m = re.exec(text))){
+    if (m[1]) for (const w of segZh(m[1])) toks.push({t:"w", s:w, b:w});
+    else if (m[2]) toks.push({t:"lat", s:m[2]});
+    else toks.push({t:"x", s:m[3]});
+  }
+  return toks;
+}
+function tokLatinSplit(tokens){
+  // gộp chữ Latin trong kết quả tách Nhật/Hàn thành token "lat"
+  const out = [];
+  for (const tk of tokens){
+    if (tk.t === "x" && /[A-Za-z]/.test(tk.s)){
+      const last = out[out.length - 1];
+      if (last && last.t === "lat") last.s += tk.s; else out.push({t:"lat", s:tk.s});
+    } else out.push(tk);
+  }
+  return out;
+}
+function compoundsOf(l, w, limit){
+  const lines = D[l]; if (!lines) return [];
+  const starts = [], inside = [];
+  for (let i = 0; i < lines.length && starts.length < limit; i++){
+    const hw = lines[i].slice(0, lines[i].indexOf("\t")).split("|")[0];
+    if (!hw || hw === w) continue;
+    if (hw.startsWith(w)) starts.push(i); else if (inside.length < limit && hw.includes(w)) inside.push(i);
+  }
+  return [...starts, ...inside].slice(0, limit);
+}
+function lookupZh(q){
+  const r = renderSeg(tokZh(q), "zh", zhCard);
+  let h = r.h;
+  if (r.single){
+    const w = r.words[0].b;
+    const glc = GL.filter(e => e.s && e.s !== w && e.s.includes(w)).slice(0, 30), comp = compoundsOf("zh", w, 40);
+    if (glc.length || comp.length) h += `<section class="blk"><h2>${t("contains", {w: esc(w)})}</h2><div class="list">${glc.map(liGl).join("")}${comp.map(liZh).join("")}</div></section>`;
+  }
+  return h;
+}
+function lookupJa(q, asSection){
+  const toks = markJaParticles(tokLatinSplit(segJa(q)));
+  const r = renderSeg(toks, "ja", jaCard);
+  if (asSection){
+    // bản Đa ngữ, câu chỉ có chữ Hán: thêm phần tiếng Nhật nếu có từ khớp
+    const hits = r.words.filter(x => jaEntries(x.b).length || GLI.ja.has(x.b));
+    if (!hits.length) return "";
+    const seen = new Set(); let n = 0, cards = "";
+    for (const tk of hits){ if (seen.has(tk.b)) continue; seen.add(tk.b); cards += jaCard(tk.b, "jx" + n++, tk.s); }
+    return `<section class="blk"><h2>${t("jaSection")}</h2>${cards}</section>`;
+  }
+  let h = r.h;
+  if (r.single){
+    const w = r.words[0].b;
+    const glc = GL.filter(e => e.j.some(x => x !== w && x.includes(w))).slice(0, 30), comp = compoundsOf("ja", w, 40);
+    if (glc.length || comp.length) h += `<section class="blk"><h2>${t("contains", {w: esc(w)})}</h2><div class="list">${glc.map(liGl).join("")}${comp.map(liJa).join("")}</div></section>`;
+  }
+  return h;
+}
+function lookupKo(q){
+  const toks = tokLatinSplit(segKo(q));
+  const r = renderSeg(toks, "ko", koCard);
+  let h = r.h;
+  if (r.single){
+    const w = r.words[0].b;
+    const glc = GL.filter(e => e.k.some(x => x !== w && x.includes(w))).slice(0, 30), comp = compoundsOf("ko", w, 40);
+    if (glc.length || comp.length) h += `<section class="blk"><h2>${t("contains", {w: esc(w)})}</h2><div class="list">${glc.map(liGl).join("")}${comp.map(liKo).join("")}</div></section>`;
+  }
+  return h;
+}
+
+/* ---- tìm ngược Anh/Việt → Trung/Nhật/Hàn ---- */
+const FOLD = {zh:null, ja:null, ko:null};
+const COL = {zh:{vi:4, en:5}, ja:{vi:3, en:2}, ko:{vi:3, en:2}};
+function foldedVi(l, i){ if (!FOLD[l]) FOLD[l] = D[l].map(x => fold(x.split("\t")[COL[l].vi] || "")); return FOLD[l][i]; }
+function norm(s){ return s.toLowerCase().replace(/\([^)]*\)/g, "").replace(/^(to|a|an|the)\s+/, "").replace(/\s+/g, " ").trim(); }
+const MARK = /\((literary|archaic|old|dialect|Tw|Taiwan|Cantonese|slang|Internet slang|classical|onom|euphemism|derog|vulgar|humble|honorific|Buddhism|Taoism|TCM|loanword)/i;
+function reverse(l, word, field, limit){
+  const lines = D[l]; if (!lines) return [];
+  const q = norm(word); if (!q) return [];
+  const col = COL[l][field];
+  const wordRe = new RegExp("(^|[^\\p{L}])" + escRe(q) + "($|[^\\p{L}])", "iu");
+  const toks = q.split(" ").filter(x => x.length > 1);
+  const tokRes = toks.length > 1 ? toks.map(x => new RegExp("(^|[^\\p{L}])" + escRe(x) + "($|[^\\p{L}])", "iu")) : null;
+  const useFold = field === "vi" && !VNMARK.test(q);
+  const hits = [];
+  for (let i = 0; i < lines.length; i++){
+    const parts = lines[i].split("\t");
+    const d = useFold ? foldedVi(l, i) : parts[col]; if (!d) continue;
+    const dl = d.toLowerCase();
+    if (tokRes ? !toks.every(x => dl.includes(x)) : !dl.includes(q)) continue;
+    let best = 0;
+    d.split("/").forEach((sense, k) => {
+      const pen = MARK.test(sense) ? 35 : 0;            // văn ngôn / phương ngữ / tiếng lóng: đẩy xuống
+      for (const sub of sense.split(";")){
+        const n = norm(sub); let sc = 0;
+        if (n === q) sc = 100 - 8 * k;                    // nghĩa đứng đầu được ưu tiên
+        else if (wordRe.test(n)) sc = 45 - Math.min(25, n.length / 3) - 4 * k;
+        else if (tokRes && tokRes.every(r => r.test(n))) sc = 30 - Math.min(20, n.length / 4) - 4 * k;
+        best = Math.max(best, sc - pen);
+      }
+    });
+    if (best <= 0) continue;
+    const hw = l === "ja" ? (parts[0].split("|")[0] || parts[1].split("|")[0]) : parts[0];
+    if (l === "zh"){
+      if (/^[A-Za-z0-9]/.test(hw)) best -= 20;
+      if (/variant of|surname|old variant/i.test(parts[5] || "")) best -= 30;
+      if (hw.length === 1) best -= 8;
+    }
+    if (l === "ja" && parts[5] === "1") best += 15;      // từ thông dụng
+    if (GLI[l].has(hw)) best += 30;                     // có trong thuật ngữ xưởng
+    hits.push([best - hw.length * 0.5, i]);
+  }
+  hits.sort((a, b) => b[0] - a[0]);
+  return hits.slice(0, limit).map(h => h[1]);
+}
+function glReverse(word, field){
+  const q = norm(word); if (!q) return [];
+  const f = field === "vi" && !VNMARK.test(q) ? fold : (s => s);
+  const re = new RegExp("(^|[^\\p{L}])" + escRe(q) + "($|[^\\p{L}])", "iu");
+  return GL.filter(e => { const v = f(e[field] || "").toLowerCase(); return v.split(/[,;()]/).some(x => norm(x) === q) || re.test(v); });
+}
+
+/* ---- Anh-Việt / Việt-Anh (định dạng OVDP) ---- */
+function renderOvdp(raw, hd){
+  const lines = raw.replace(/\\n/g, "\n").replace(/\\\\/g, "\\").split("\n");
+  let h = "", inList = false; const close = () => { if (inList){ h += "</ul>"; inList = false; } };
+  lines.forEach((ln, k) => {
+    ln = ln.trim(); if (!ln) return;
+    const c = ln[0], rest = ln.slice(1).trim();
+    if (c === "@" && k === 0){ const m = /\/(.+)\//.exec(rest); if (m) h += `<div class="ipa">/${esc(m[1])}/ ${sayBtn(hd, "en")}</div>`; }
+    else if (c === "@"){ close(); h += `<div class="sec">${esc(rest)}</div>`; }
+    else if (c === "*"){ close(); h += `<div class="pos">${esc(rest)}</div>`; }
+    else if (c === "!"){ close(); h += `<div class="idiom">${esc(rest)}</div>`; }
+    else if (c === "-" || c === "="){
+      if (!inList){ h += "<ul>"; inList = true; }
+      if (c === "="){ const [a, b] = rest.split("+"); h += `<li class="ex">${esc(a.trim())}${b ? " — " + esc(b.trim()) : ""}</li>`; }
+      else h += `<li>${esc(rest)}</li>`;
+    } else { close(); h += `<div>${esc(ln)}</div>`; }
+  });
+  close(); return h;
+}
+function lemmaCandidates(w){
+  const c = [w];
+  if (w.endsWith("ies")) c.push(w.slice(0, -3) + "y");
+  if (w.endsWith("es")) c.push(w.slice(0, -2));
+  if (w.endsWith("s")) c.push(w.slice(0, -1));
+  if (w.endsWith("ed")) c.push(w.slice(0, -2), w.slice(0, -1));
+  if (w.endsWith("ing")) c.push(w.slice(0, -3), w.slice(0, -3) + "e");
+  if (w.endsWith("er")) c.push(w.slice(0, -2), w.slice(0, -1));
+  return c;
+}
+function prefixKeys(keys, p, limit){
+  let lo = 0, hi = keys.length;
+  while (lo < hi){ const m = (lo + hi) >> 1; if (keys[m] < p) lo = m + 1; else hi = m; }
+  const out = []; for (let i = lo; i < keys.length && out.length < limit && keys[i].startsWith(p); i++) if (keys[i] !== p) out.push(keys[i]);
+  return out;
+}
+let VIFOLD = null;
+function viFoldMap(){
+  if (!VIFOLD){ VIFOLD = new Map(); VIKEYS.forEach(k => { const f = fold(k); if (!VIFOLD.has(f)) VIFOLD.set(f, VIMAP.get(k)); }); }
+  return VIFOLD;
+}
+function lookupLatin(q){
+  const low = q.toLowerCase(), isVi = VNMARK.test(q);
+  let h = "";
+  const gl = glReverse(q, isVi ? "vi" : "en");
+  if (!isVi) for (const e of glReverse(q, "vi")) if (!gl.includes(e)) gl.push(e);
+  if (gl.length) h += `<section class="blk"><h2>${t("secGloss")}</h2><div class="list">${gl.slice(0, 24).map(liGl).join("")}</div></section>`;
+  // dạng gốc tiếng Anh (screws → screw) dùng cho cả tìm ngược
+  let lemma = low;
+  if (!isVi) for (const c of lemmaCandidates(low)) if (ENMAP.has(c)){ lemma = c; break; }
+  // từ tương ứng trong từng ngôn ngữ đang bật — đặt ngay sau thuật ngữ xưởng
+  const pyKey = low.replace(/[\s']/g, "").replace(/ü/g, "v");
+  const pyHit = on("zh") && !isVi && /^[a-z]+$/.test(pyKey) && PYIDX.has(pyKey);
+  for (const l of ACTIVE){
+    let rev = reverse(l, isVi ? q : lemma, isVi ? "vi" : "en", 18);
+    if (!isVi && rev.length < 5) for (const i of reverse(l, q, "vi", 18 - rev.length)) if (!rev.includes(i)) rev.push(i);
+    if (pyHit && l === "zh" && !ENMAP.has(lemma)) rev = [];
+    if (rev.length) h += `<section class="blk"><h2>${t("equiv_" + l)}</h2><div class="list">${rev.map(LI[l]).join("")}</div></section>`;
+  }
+  if (pyHit) h += `<section class="blk"><h2>${t("byPinyin", {p: esc(pyKey)})}</h2><div class="list">${PYIDX.get(pyKey).slice(0, 30).map(liZh).join("")}</div></section>`;
+  if (h) h += `<p class="note">${t("revNote")}</p>`;
+  // bài Anh-Việt / Việt-Anh
+  const primary = isVi ? [[VIMAP, VI, t("vien")], [ENMAP, EN, t("envi")]] : [[ENMAP, EN, t("envi")], [VIMAP, VI, t("vien")]];
+  let found = false;
+  for (const [map, arr, label] of primary){
+    for (const c of arr === EN ? lemmaCandidates(low) : [low]){
+      const i = map.get(c); if (i === undefined) continue;
+      const [hd, def] = arr[i].split("\t");
+      h += `<section class="blk"><h2>${label}${c !== low ? t("lemma", {c: esc(c)}) : ""}</h2><div class="card envi"><div class="hw"><span class="w">${esc(hd)}</span></div>${renderOvdp(def, hd)}</div></section>`;
+      found = true; break;
+    }
+  }
+  if (!isVi && !VIMAP.has(low)){
+    const i = viFoldMap().get(low);
+    if (i !== undefined){ const [hd, def] = VI[i].split("\t"); h += `<section class="blk"><h2>${t("vien")}</h2><div class="card envi"><div class="hw"><span class="w">${esc(hd)}</span></div>${renderOvdp(def, hd)}</div></section>`; found = true; }
+  }
+  const sug = prefixKeys(isVi ? VIKEYS : ENKEYS, low, 20);
+  if (sug.length) h += `<section class="blk"><h2>${t("sugg")}</h2><div class="sugg">${sug.map(s => `<button data-q="${esc(s)}">${esc(s)}</button>`).join("")}</div></section>`;
+  return h;
+}
+
+/* ---- điều phối ---- */
+function lookup(raw, fromClick){
+  const q = (raw || "").trim(), out = $("#out");
+  if (!q){ out.innerHTML = ""; renderHistory(); return; }
+  if (!READY) return;
+  let h = "";
+  if (HANGUL.test(q) && on("ko")) h = lookupKo(q);
+  else if (KANA.test(q) && on("ja")) h = lookupJa(q);
+  else if (HAN.test(q)){
+    if (on("zh")){ h = lookupZh(q); if (on("ja")) h += lookupJa(q, true); }
+    else if (on("ja")) h = lookupJa(q);
+    else if (on("ko")) h = lookupKo(q);
+  }
+  else h = lookupLatin(q);
+  out.innerHTML = h || `<div class="status">${t("notFound", {q: esc(q)})}</div>`;
+  if (fromClick) addHistory(q);
+}
+document.addEventListener("click", e => {
+  const li = e.target.closest("[data-q]"); if (!li) return;
+  $("#q").value = li.dataset.q; lookup(li.dataset.q, true); window.scrollTo({top: 0});
+});
+document.addEventListener("click", e => {
+  const c = e.target.closest("[data-jump]"); if (!c) return;
+  const el = document.getElementById(c.dataset.jump); if (!el) return;
+  document.querySelectorAll(".card.target").forEach(x => x.classList.remove("target"));
+  el.classList.add("target"); el.scrollIntoView({behavior: "smooth", block: "center"});
+  addHistory(c.querySelector(".w").textContent);
+});
+
+/* ---------------- lịch sử (chỉ giữ 8 lần tra gần nhất) ---------------- */
+const HIST_MAX = 8;
+function addHistory(q){
+  q = q.trim(); if (!q || q.length > 40) return;
+  const h = store.get("tdx_hist", []).filter(x => x !== q); h.unshift(q); store.set("tdx_hist", h.slice(0, HIST_MAX));
+}
+function renderHistory(){
+  const h = store.get("tdx_hist", []).slice(0, HIST_MAX);
+  $("#hist").innerHTML = h.length && !$("#q").value.trim() ? `<span class="note" style="align-self:center">${t("recent")}</span>` + h.map(x => `<button data-q="${esc(x)}">${esc(x)}</button>`).join("") : "";
+}
+
+/* ---------------- ô nhập ---------------- */
+let timer = 0;
+const qEl = $("#q");
+qEl.addEventListener("input", () => {
+  qEl.style.height = "auto"; qEl.style.height = Math.min(220, qEl.scrollHeight + 4) + "px";
+  clearTimeout(timer); timer = setTimeout(() => { lookup(qEl.value); renderHistory(); }, 250);
+});
+qEl.addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); lookup(qEl.value, true); }
+  if (e.key === "Escape"){ qEl.value = ""; lookup(""); }
+});
+qEl.addEventListener("blur", () => { if (qEl.value.trim()) addHistory(qEl.value); });
+$("#clearBtn").onclick = () => { qEl.value = ""; qEl.style.height = ""; lookup(""); qEl.focus(); };
+document.addEventListener("keydown", e => {
+  if (e.key === "/" && document.activeElement !== qEl && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){ e.preventDefault(); qEl.focus(); qEl.select(); }
+});
+
+/* ---------------- tab Thuật ngữ xưởng ---------------- */
+let editing = null;
+function renderGlossTable(){
+  if (!READY) return;
+  const cols = ACTIVE.slice();
+  $("#gthead").innerHTML = `<tr>${cols.map(l => `<th>${t("th" + l[0].toUpperCase() + l[1])}</th>`).join("")}<th>${t("thVi")}</th><th>${t("thEn")}</th><th>${t("thG")}</th><th></th></tr>`;
+  const f = $("#gfilter").value.trim().toLowerCase(), grp = $("#ggroup").value;
+  const rows = GL.filter(e => (!grp || (e.g || "") === grp) &&
+    (!f || [e.s, e.t, e.p, e.vi, e.en, e.g, groupName(e.g), ...(e.j || []), ...(e.k || [])].join(" ").toLowerCase().includes(f)));
+  $("#gtable").innerHTML = rows.slice(0, 1500).map(e => `<tr>
+    ${cols.map(l => l === "zh"
+      ? `<td><b style="font-size:18px">${esc(e.s || "")}</b>${e.t && e.t !== e.s ? ` <span class="sub">${esc(e.t)}</span>` : ""}<br><span class="p">${esc(e.p ? pyMarks(e.p) : "")}</span></td>`
+      : `<td>${esc(((l === "ja" ? e.j : e.k) || []).join(" / "))}</td>`).join("")}
+    <td>${esc(e.vi)}</td><td>${esc(e.en || "")}</td><td>${esc(groupName(e.g))}</td>
+    <td style="white-space:nowrap">${e.mine ? `<span class="mine">${t("mineTag")}</span><br>` : ""}<button class="iconbtn" data-edit="${esc(glKey(e))}">${t("edit")}</button>${e.mine ? ` <button class="iconbtn" data-del="${esc(glKey(e))}">${t("del")}</button>` : ""}</td></tr>`).join("");
+}
+$("#gfilter").addEventListener("input", renderGlossTable);
+$("#ggroup").addEventListener("change", renderGlossTable);
+function fillGroupSelect(){
+  const sel = $("#ggroup"), cur = sel.value;
+  const groups = [...new Set(GL.map(e => e.g || "").filter(Boolean))].sort((a, b) => groupName(a).localeCompare(groupName(b)));
+  sel.innerHTML = `<option value="">${t("allGroups")}</option>` + groups.map(g => `<option value="${esc(g)}">${esc(groupName(g))}</option>`).join("");
+  sel.value = cur;
+}
+const splitTerms = v => v.split(/\s*\/\s*/).map(x => x.trim()).filter(Boolean);
+function resetForm(){ for (const k of ["s","p","j","k","vi","en","g"]) $("#f_" + k).value = ""; editing = null; $("#f_msg").textContent = ""; }
+$("#f_reset").onclick = resetForm;
+$("#f_save").onclick = () => {
+  const s = $("#f_s").value.trim(), j = splitTerms($("#f_j").value), k = splitTerms($("#f_k").value), vi = $("#f_vi").value.trim();
+  if (!(HAN.test(s) || j.length || k.length) || !vi){ $("#f_msg").textContent = t("needTerm"); return; }
+  const e = {s: HAN.test(s) ? s : "", t: HAN.test(s) ? autoTrad(s) : "", p: HAN.test(s) ? ($("#f_p").value.trim() || autoPinyin(s)) : "",
+             vi, en: $("#f_en").value.trim(), g: $("#f_g").value.trim(), j, k};
+  const key = glKey(e);
+  const mine = userGloss().filter(x => glKey(x) !== key && glKey(x) !== editing); mine.unshift(e);
+  store.set("tdx_user_gloss", mine); rebuildGloss(); fillGroupSelect(); renderGlossTable(); resetForm();
+  $("#f_msg").textContent = t("saved", {s: e.s || j[0] || k[0]});
+};
+document.addEventListener("click", ev => {
+  const ed = ev.target.closest("[data-edit]"), del = ev.target.closest("[data-del]");
+  if (ed){
+    const e = GL.find(x => glKey(x) === ed.dataset.edit); if (!e) return;
+    $("#f_s").value = e.s || ""; $("#f_p").value = e.p || ""; $("#f_j").value = (e.j || []).join(" / "); $("#f_k").value = (e.k || []).join(" / ");
+    $("#f_vi").value = e.vi; $("#f_en").value = e.en || ""; $("#f_g").value = e.g || "";
+    editing = e.mine ? glKey(e) : null; window.scrollTo({top: 0, behavior: "smooth"}); $("#f_vi").focus();
+  }
+  if (del && confirm(t("confirmDel", {s: del.dataset.del.replace(/^(ja|ko):/, "")}))){
+    store.set("tdx_user_gloss", userGloss().filter(x => glKey(x) !== del.dataset.del)); rebuildGloss(); renderGlossTable();
+  }
+});
+$("#g_export").onclick = () => {
+  const lines = ["# zh | pinyin | vi | en | group | ja | ko"];
+  for (const e of userGloss()) lines.push([e.s, e.p, e.vi, e.en, e.g, (e.j || []).join(" / "), (e.k || []).join(" / ")].map(x => (x || "").replace(/[\t\n]/g, " ")).join("\t"));
+  const blob = new Blob(["\ufeff" + lines.join("\r\n")], {type: "text/tab-separated-values"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = "thuat-ngu-cua-toi-" + new Date().toISOString().slice(0, 10) + ".tsv"; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+$("#g_import").onchange = async ev => {
+  const file = ev.target.files[0]; if (!file) return;
+  const text = (await file.text()).replace(/^\ufeff/, "");
+  let items = [];
+  if (file.name.endsWith(".json")){ try { items = JSON.parse(text); } catch { alert(t("badJson")); return; } }
+  else for (const ln of text.split(/\r?\n/)){
+    if (!ln.trim() || ln.startsWith("#")) continue;
+    const [s, p, vi, en, g, j, k] = ln.split("\t").map(x => (x || "").trim());
+    items.push({s, p, vi, en, g, j: splitTerms(j || ""), k: splitTerms(k || "")});
+  }
+  items = items.filter(e => e && (HAN.test(e.s || "") || (e.j || []).length || (e.k || []).length) && e.vi)
+               .map(e => ({...e, j: e.j || [], k: e.k || [], t: e.t || (e.s ? autoTrad(e.s) : ""), p: e.p || (e.s ? autoPinyin(e.s) : "")}));
+  const keys = new Set(items.map(glKey));
+  store.set("tdx_user_gloss", [...items, ...userGloss().filter(x => !keys.has(glKey(x)))]);
+  rebuildGloss(); fillGroupSelect(); renderGlossTable(); ev.target.value = "";
+  alert(t("imported", {n: items.length}));
+};
+
+applyLang();
+loadAll().catch(err => { $("#loading").textContent = "Error: " + err; console.error(err); });
+</script>
+</body>
+</html>
