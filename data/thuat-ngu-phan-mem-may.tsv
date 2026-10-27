@@ -1,0 +1,192 @@
+# Từ vựng phần mềm máy / điều khiển chuyển động hay gặp (rút từ mã nguồn & giao diện các máy dùng tiếng Hàn).
+# giản thể | pinyin (trống = tự điền) | tiếng Việt | tiếng Anh | nhóm
+位置		vị trí	position	Chuyển động
+位置值		giá trị vị trí	position value	Chuyển động
+指定		chỉ định	specify, designate	Phần mềm
+移动		di chuyển	move	Chuyển động
+移动量		lượng di chuyển	travel amount	Chuyển động
+驱动		dẫn động, truyền động (Drive)	drive	Chuyển động
+模块		mô-đun	module	Phần mềm
+信息		thông tin	information	Phần mềm
+数据		dữ liệu	data	Phần mềm
+编号		số hiệu, mã số	number, ID	Phần mềm
+发生		xảy ra, phát sinh	occur	Phần mềm
+单位		đơn vị	unit	Đo lường
+模式		chế độ	mode	Phần mềm
+数量		số lượng	quantity, count	Phần mềm
+时间		thời gian	time	Phần mềm
+功能		chức năng	function	Phần mềm
+是否		có hay không (bật/tắt)	whether (yes/no)	Phần mềm
+添加		thêm	add	Phần mềm
+变更		thay đổi	change	Phần mềm
+通道		kênh	channel	Điều khiển
+结束		kết thúc	end	Phần mềm
+处理		xử lý	process, handle	Phần mềm
+计数器		bộ đếm	counter	Điều khiển
+触点		tiếp điểm	contact	Điện
+全部		toàn bộ	all	Phần mềm
+最大		tối đa	maximum	Phần mềm
+最小		tối thiểu	minimum	Phần mềm
+最大值		giá trị lớn nhất	maximum value	Phần mềm
+最小值		giá trị nhỏ nhất	minimum value	Phần mềm
+执行		thực hiện, thực thi	execute	Phần mềm
+方向		hướng	direction	Chuyển động
+正方向		chiều dương	positive direction	Chuyển động
+负方向		chiều âm	negative direction	Chuyển động
+超过		vượt quá	exceed	Phần mềm
+搜索		tìm kiếm	search	Phần mềm
+范围		phạm vi	range	Phần mềm
+消息		thông báo, tin nhắn	message	Phần mềm
+生成		tạo ra	create, generate	Phần mềm
+命令		lệnh	command	Phần mềm
+连续		liên tục	continuous	Phần mềm
+有无		có hay không	presence / absence	Cảm biến
+检查		kiểm tra	check	Phần mềm
+按钮		nút bấm	button	Phần mềm
+选择		chọn	select	Phần mềm
+代码		mã	code	Phần mềm
+区域		vùng, khu vực	area, region	Phần mềm
+绝对		tuyệt đối	absolute	Chuyển động
+相对		tương đối	relative	Chuyển động
+进行		tiến hành	proceed, in progress	Phần mềm
+圆弧		cung tròn	arc	Chuyển động
+显示		hiển thị	display	Phần mềm
+减速		giảm tốc	deceleration	Chuyển động
+加速		tăng tốc	acceleration	Chuyển động
+加减速		tăng giảm tốc	acceleration / deceleration	Chuyển động
+减速度		gia tốc giảm (Deceleration)	deceleration rate	Chuyển động
+大小		kích thước, độ lớn	size	Phần mềm
+作业		công việc, tác nghiệp	job, work	Sản xuất
+距离		khoảng cách	distance	Chuyển động
+条件		điều kiện	condition	Phần mềm
+删除		xóa	delete	Phần mềm
+终点		điểm cuối	end point	Chuyển động
+装置		thiết bị	device, unit	Phần mềm
+转换		chuyển đổi	convert	Phần mềm
+安全		an toàn	safety	An toàn
+修改		sửa	modify, edit	Phần mềm
+保持		giữ, duy trì	hold, keep	Phần mềm
+内部		bên trong, nội bộ	internal	Phần mềm
+外部		bên ngoài	external	Phần mềm
+通用		đa dụng, dùng chung	general-purpose	Phần mềm
+内存		bộ nhớ	memory	Lập trình
+默认值		giá trị mặc định	default value	Phần mềm
+设定值		giá trị cài đặt	set value	Phần mềm
+传输		truyền (dữ liệu)	transmit	Truyền thông
+图像		hình ảnh	image	Thị giác
+限制		giới hạn	limit, restrict	Phần mềm
+周期		chu kỳ	cycle, period	Phần mềm
+直线		đường thẳng	straight line	Chuyển động
+有效		hợp lệ, có hiệu lực	valid	Phần mềm
+无效		không hợp lệ	invalid	Phần mềm
+套接字		Socket (cổng kết nối mạng)	socket	Truyền thông
+半径		bán kính	radius	Đo lường
+扩展		mở rộng	extend, expansion	Phần mềm
+注意		chú ý	caution	An toàn
+响应		phản hồi	response	Truyền thông
+角度		góc	angle	Đo lường
+误差		sai số	error (deviation)	Đo lường
+复制		sao chép	copy	Phần mềm
+位		bit; vị trí	bit; position	Điều khiển
+频率		tần số	frequency	Điện
+定时器		bộ định thời (Timer)	timer	Điều khiển
+地址		địa chỉ	address	Truyền thông
+次数		số lần	count (times)	Phần mềm
+初始		ban đầu	initial	Phần mềm
+中心		tâm	center	Đo lường
+目标		mục tiêu, đích	target	Chuyển động
+目标位置		vị trí đích	target position	Chuyển động
+采样		lấy mẫu	sampling	Kiểm tra
+比较		so sánh	compare	Phần mềm
+比率		tỷ lệ	ratio	Phần mềm
+输入输出		vào/ra (IO)	input/output	Điều khiển
+重复		lặp lại	repeat	Phần mềm
+上限		giới hạn trên	upper limit	Phần mềm
+下限		giới hạn dưới	lower limit	Phần mềm
+项目		hạng mục	item	Phần mềm
+对齐		căn chỉnh, thẳng hàng	alignment	Thị giác
+标准		tiêu chuẩn	standard	Chất lượng
+左侧		bên trái	left side	Từ chung
+右侧		bên phải	right side	Từ chung
+记录		ghi chép, bản ghi	record	Phần mềm
+参考		tham khảo	reference	Phần mềm
+顺序		thứ tự	order, sequence	Phần mềm
+序列		trình tự (Sequence)	sequence	Phần mềm
+分组		nhóm	group	Phần mềm
+措施		biện pháp xử lý	countermeasure, action	Bảo trì
+临时		tạm thời	temporary	Phần mềm
+不可		không được, không thể	not allowed	Phần mềm
+立即		ngay lập tức	immediately	Phần mềm
+文件名		tên file	file name	Phần mềm
+固定		cố định	fixed	Cơ khí
+引脚		chân (Pin)	pin	Điện
+种类		loại	type, kind	Phần mềm
+传递		truyền, chuyển	pass, transfer	Phần mềm
+光标		con trỏ	cursor	Phần mềm
+排除		loại trừ	exclude	Phần mềm
+区间		khoảng, đoạn	section, interval	Chuyển động
+固件		firmware	firmware	Điều khiển
+剩余		còn lại	remaining	Phần mềm
+防止		phòng ngừa	prevent	An toàn
+宽度		bề rộng	width	Đo lường
+强制		cưỡng bức (Force)	force	Điều khiển
+紧急		khẩn cấp	emergency	An toàn
+提取		trích xuất	extract	Phần mềm
+原因		nguyên nhân	cause	Bảo trì
+亮度		độ sáng	brightness	Thị giác
+数字量		tín hiệu số (Digital)	digital	Điều khiển
+模拟量		tín hiệu tương tự (Analog)	analog	Điều khiển
+颜色		màu sắc	color	Thị giác
+正数		số dương	positive number	Phần mềm
+负数		số âm	negative number	Phần mềm
+延迟		trễ	delay	Phần mềm
+平均		trung bình	average	Kiểm tra
+面板		bảng điều khiển (Panel)	panel	Điều khiển
+步骤		bước	step	Phần mềm
+菜单		menu	menu	Phần mềm
+日期		ngày	date	Phần mềm
+开关		công tắc	switch	Điện
+编辑		chỉnh sửa	edit	Phần mềm
+详细		chi tiết	detail	Phần mềm
+注释		chú thích (Comment)	comment	Lập trình
+跳过		bỏ qua	skip	Phần mềm
+诊断		chẩn đoán	diagnosis	Bảo trì
+低速		tốc độ thấp	low speed	Chuyển động
+高速		tốc độ cao	high speed	Chuyển động
+中速		tốc độ trung bình	medium speed	Chuyển động
+匀速		tốc độ đều	constant speed	Chuyển động
+通过		qua, thông qua	pass	Phần mềm
+循环		vòng lặp, tuần hoàn	loop, cycle	Lập trình
+必须		bắt buộc	required	Phần mềm
+验证		xác minh	verify	Phần mềm
+禁止		cấm	prohibit	An toàn
+插入		chèn	insert	Phần mềm
+定心		định tâm	centering	Thị giác
+串行		nối tiếp	serial	Truyền thông
+分离		tách	separate	Phần mềm
+小数点		dấu thập phân	decimal point	Phần mềm
+触发		kích hoạt (Trigger)	trigger	Điều khiển
+倍率		tỷ lệ tốc độ (Override)	override, ratio	Chuyển động
+坐标系		hệ tọa độ	coordinate system	Chuyển động
+中断		ngắt (Interrupt)	interrupt	Lập trình
+点胶机		máy tra keo (Dispenser)	dispenser	Tra keo
+标志		cờ (Flag), dấu hiệu	flag	Lập trình
+窗口		cửa sổ	window	Phần mềm
+映射		ánh xạ (Mapping)	mapping	Phần mềm
+螺旋插补		nội suy xoắn ốc (Helical)	helical interpolation	Chuyển động
+倍频		nhân tần (nhân xung encoder)	pulse multiplication	Chuyển động
+多轴		nhiều trục	multi-axis	Chuyển động
+虚拟轴		trục ảo	virtual axis	Chuyển động
+资源		tài nguyên	resource	Lập trình
+扩展名		đuôi file	file extension	Phần mềm
+取料头		đầu gắp (Picker)	picker	Cơ khí
+控制器		bộ điều khiển	controller	Điều khiển
+重新连接		kết nối lại	reconnect	Truyền thông
+方法		phương thức (Method); cách làm	method	Lập trình
+键合		hàn dây (Bonding)	bonding	SMT
+进度		tiến độ	progress	Phần mềm
+列		cột	column	Phần mềm
+分隔符		ký tự phân cách	separator	Lập trình
+指针		con trỏ (Pointer)	pointer	Lập trình
+文件夹		thư mục	folder	Phần mềm
+事项		điều, mục (cần lưu ý)	matters, items	Phần mềm

@@ -18,6 +18,8 @@ Vào mục **[Releases](../../releases)**, tải file phù hợp:
 
 **Chỉ cần chép đúng 1 file .html** sang máy (kể cả máy không có internet) rồi nhấp đúp.
 
+**Phiên bản** có dạng `v1.0.YYMMDD` (số cuối = ngày build), hiện ở góc trên cạnh tên và trong tab Hướng dẫn — so với bản mới nhất ở Releases để biết có cập nhật hay không.
+
 ## Tính năng
 
 - **Dán cả câu** (thông báo lỗi, menu phần mềm): tự tách thành từng từ; hiện cách đọc (pinyin / kana / chữ Hán của từ Hàn), **âm Hán-Việt**, nghĩa Việt và Anh.
@@ -25,7 +27,7 @@ Vào mục **[Releases](../../releases)**, tải file phù hợp:
   - Tiếng Hàn: bỏ tiểu từ và đuôi động từ (흡착 노즐을 → 흡착 노즐, 확인하십시오 → 확인), gộp cụm nhiều từ (원점 복귀).
 - **Gõ tiếng Anh hoặc tiếng Việt** (có dấu hay không dấu, vd `bao duong`) → từ tương ứng trong tiếng Trung / Nhật / Hàn, đặt ngay đầu kết quả.
 - **Pinyin** không dấu viết liền (vd `dianji`) khi chỉ nghe mà không biết chữ.
-- **Bộ thuật ngữ xưởng ~1.060 mục** (khung vàng, luôn hiện trước): phần mềm/HMI, chuyển động–servo, khí nén, cảm biến, an toàn, điện, thị giác máy, chất lượng, SMT, bắt vít, tra keo, MES, bảo trì, dụng cụ cầm tay, dụng cụ đo, vật tư, đồ bảo hộ, từ lập trình… Thuật ngữ ghép không có trong từ điển chung vẫn hiện nghĩa từng thành phần.
+- **Bộ thuật ngữ xưởng ~1.250 mục** (khung vàng, luôn hiện trước): phần mềm/HMI, chuyển động–servo, khí nén, cảm biến, an toàn, điện, thị giác máy, chất lượng, SMT, bắt vít, tra keo, MES, bảo trì, dụng cụ cầm tay, dụng cụ đo, vật tư, đồ bảo hộ, từ lập trình, từ vựng phần mềm máy/điều khiển chuyển động (kèm các cách gọi hay gặp trên máy Hàn: 셋팅, 리미트, 홈, 서보팩, 오버라이드…)… Thuật ngữ ghép không có trong từ điển chung vẫn hiện nghĩa từng thành phần.
 - **Tự thêm thuật ngữ** của xưởng mình (lưu trong trình duyệt, có xuất/nhập file TSV).
 - **Giao diện 5 ngôn ngữ**: Việt, 中文, 日本語, 한국어, English — đồng nghiệp người Trung/Nhật/Hàn dùng được.
 
@@ -46,6 +48,7 @@ Cần Python 3.10+ (không cần thư viện ngoài).
 
 | Thư mục / file | Nội dung |
 |---|---|
+| `VERSION` | Số phiên bản lớn.nhỏ (`1.0`); build tự thêm ngày `.YYMMDD` |
 | `data/thuat-ngu-*.tsv` | Bộ thuật ngữ xưởng: `giản thể ⇥ pinyin ⇥ tiếng Việt ⇥ tiếng Anh ⇥ nhóm` (pinyin để trống = tự điền) |
 | `data/dich-ja-ko*.tsv` | Bản dịch thuật ngữ sang Nhật / Hàn: `giản thể ⇥ tiếng Nhật ⇥ tiếng Hàn` (nhiều cách gọi ngăn bằng ` / `) |
 | `build/build.py` | Gộp từ điển Trung, sinh StarDict cho GoldenDict, đóng gói các bản HTML |

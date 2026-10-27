@@ -27,6 +27,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Segoe UI",sys
 header{position:sticky;top:0;z-index:5;background:var(--panel);border-bottom:1px solid var(--line)}
 .bar{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .brand{font-weight:700;font-size:18px;margin-right:8px}
+.ver{font-size:12px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle}
 .tabs{display:flex;gap:4px}
 .tab{border:0;background:none;color:var(--muted);padding:8px 12px;border-radius:8px;font:inherit;cursor:pointer}
 .tab.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
@@ -111,7 +112,7 @@ kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;paddi
 </head>
 <body>
 <header><div class="bar">
-  <span class="brand">📖 <span id="brand">Từ điển Xưởng</span></span>
+  <span class="brand">📖 <span id="brand">Từ điển Xưởng</span><span class="ver" title="Phiên bản / Version">@@VERSION@@</span></span>
   <nav class="tabs">
     <button class="tab on" data-tab="look" data-i18n="tabLook">Tra từ</button>
     <button class="tab" data-tab="gloss" data-i18n="tabGloss">Thuật ngữ xưởng</button>
@@ -187,6 +188,7 @@ kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;paddi
    tiếng Anh–Việt luôn có. Bản Đa ngữ cho bật/tắt từng ngôn ngữ (chỉ giải nén cái được bật).
    ===================================================================== */
 const EDITION = /*@@EDITION@@*/;
+const VERSION = "@@VERSION@@";              // v{lớn}.{nhỏ}.{ngày build YYMMDD}
 const NO_SPEECH = /*@@NO_SPEECH@@*/false;      // bản "KhongLoa": bỏ nút đọc 🔊
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -422,7 +424,7 @@ const groupName = g => { if (!g) return ""; const a = GROUPS[g]; if (!a || LANG 
 function edKey(){ return ALL.length > 1 ? "ed_all" : "ed_" + ALL[0]; }
 function applyLang(){
   document.documentElement.lang = {zh:"zh-CN", ja:"ja", ko:"ko"}[LANG] || LANG;
-  document.title = t("brand") + " · " + t(edKey());
+  document.title = t("brand") + " · " + t(edKey()) + " · " + VERSION;
   $("#brand").textContent = t("brand") + " · " + t(edKey());
   document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
   document.querySelectorAll("[data-i18n-html]").forEach(el => el.innerHTML = t(el.dataset.i18nHtml));
@@ -544,7 +546,7 @@ async function loadAll(){
 function updateStats(){
   const items = [...ACTIVE.filter(l => D[l]).map(l => t("n" + l[0].toUpperCase() + l[1], {n: D[l].length.toLocaleString()})),
                  t("nEn", {n: EN.length.toLocaleString()}), t("nVi", {n: VI.length.toLocaleString()})].join(" · ");
-  $("#stats").textContent = t("stats", {items, gl: GL.length, ms: LOAD_MS});
+  $("#stats").textContent = VERSION + " · " + t("stats", {items, gl: GL.length, ms: LOAD_MS});
 }
 
 /* ---------------- thuật ngữ xưởng ---------------- */
@@ -698,7 +700,7 @@ const KO_ENDS = ["하십시오","하세요","합니다","했습니다","하였�
 // tiểu từ (sau danh từ) — các đuôi còn lại coi là đuôi động từ/tính từ
 const KO_PARTICLES = new Set(["에서는","에서","에게서","에게","께서","으로는","으로","로는","로","에는","에도","에","은","는","이","가","을","를","의","와","과","도","만","까지","부터","보다","처럼","나","중","시","후","전","이나","이면","이며","이고","이다","입니다","이에요","예요"]);
 function koBase(w, ok){
-  if (ok(w)) return w;
+  if (GLI.ko.has(w)) return w;
   const all = [];
   for (const e of KO_ENDS){
     if (w.length > e.length && w.endsWith(e)){
@@ -707,8 +709,8 @@ function koBase(w, ok){
       all.push(...(KO_PARTICLES.has(e) ? [st, st + "하다", st + "다", st + "되다"] : [st + "다", st + "하다", st + "되다", st]));
     }
   }
-  // ưu tiên dạng có trong thuật ngữ xưởng (확인하십시오 → 확인), sau đó mới tới từ điển chung
-  return all.find(c => GLI.ko.has(c) && ok(c)) || all.find(ok) || null;
+  // ưu tiên dạng có trong thuật ngữ xưởng (확인하십시오 → 확인, 축의 → 축 thay vì 祝意), rồi tới nguyên từ, rồi từ điển chung
+  return all.find(c => GLI.ko.has(c)) || (ok(w) ? w : null) || all.find(ok) || null;
 }
 function segKo(s){
   const parts = s.split(/(\s+|[.,!?;:()\[\]{}"'“”‘’、。，：；！？…·\/\-]+)/).filter(x => x !== "");

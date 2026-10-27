@@ -419,7 +419,12 @@ def main():
     }
     for k, v in blobs.items():
         print(f"  {k}: {len(v) / 1e6:.1f} MB base64")
-    tpl = (ROOT / "build" / "template.html").read_text(encoding="utf-8")
+    # Phiên bản: v{lớn}.{nhỏ}.{ngày build YYMMDD} — số lớn/nhỏ trong file VERSION (chỉ đổi khi chủ dự án yêu cầu)
+    import datetime
+    version = "v" + (ROOT / "VERSION").read_text(encoding="utf-8").strip() + "." + datetime.date.today().strftime("%y%m%d")
+    print(f"  Phiên bản: {version}")
+    (DIST / "VERSION.txt").write_text(version + "\n", encoding="utf-8")
+    tpl = (ROOT / "build" / "template.html").read_text(encoding="utf-8").replace("@@VERSION@@", version)
     assert tpl.count("@@DATA@@") == 1 and tpl.count("/*@@EDITION@@*/") == 1 and tpl.count("/*@@NO_SPEECH@@*/false") == 1
 
     # Các bản: (tên file, ngôn ngữ tra). Bản Trung giữ tên cũ TuDien.html cho người đã quen.
