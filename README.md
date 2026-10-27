@@ -8,17 +8,19 @@ Từ điển **chạy hoàn toàn offline trong một file HTML** (mở bằng E
 
 Vào mục **[Releases](../../releases)**, tải file phù hợp:
 
-| File | Ngôn ngữ tra | Dung lượng |
+| File (vd bản v1.0.261028) | Ngôn ngữ tra | Dung lượng |
 |---|---|---|
-| `TuDien.html` | Trung ↔ Việt / Anh | ~26 MB |
-| `TuDien-Nhat.html` | Nhật ↔ Việt / Anh | ~29 MB |
-| `TuDien-Han.html` | Hàn ↔ Việt / Anh | ~23 MB |
-| `TuDien-DaNgu.html` | Trung + Nhật + Hàn ↔ Việt / Anh — bật/tắt từng ngôn ngữ bằng nút ⚙ (chỉ giải nén ngôn ngữ được bật) | ~45 MB |
-| `…-KhongLoa.html` | Như trên nhưng bỏ nút phát âm 🔊 (máy không có loa) | |
+| `TuDien-Trung-v1.0.261028.html` | Trung ↔ Việt / Anh | ~26 MB |
+| `TuDien-Nhat-v1.0.261028.html` | Nhật ↔ Việt / Anh | ~29 MB |
+| `TuDien-Han-v1.0.261028.html` | Hàn ↔ Việt / Anh | ~23 MB |
+| `TuDien-DaNgu-v1.0.261028.html` | Trung + Nhật + Hàn ↔ Việt / Anh — bật/tắt từng ngôn ngữ bằng nút ⚙ (chỉ giải nén ngôn ngữ được bật) | ~45 MB |
+| `GoldenDict-tu-dien.zip` | (tuỳ chọn) từ điển StarDict cho GoldenDict-ng | ~37 MB |
 
 **Chỉ cần chép đúng 1 file .html** sang máy (kể cả máy không có internet) rồi nhấp đúp.
 
-**Phiên bản** có dạng `v1.0.YYMMDD` (số cuối = ngày build), hiện ở góc trên cạnh tên và trong tab Hướng dẫn — so với bản mới nhất ở Releases để biết có cập nhật hay không.
+**Phiên bản** `v1.0.YYMMDD` (số cuối = ngày build) có trong tên file, ở góc trên cạnh tên và trong tab Hướng dẫn — so với bản mới nhất ở Releases để biết có cập nhật hay không.
+
+**Phát âm 🔊** dùng giọng đọc có sẵn của Windows (Web Speech API của trình duyệt): chạy offline, không cần cài thêm gì. Nút chỉ hiện khi máy có giọng của ngôn ngữ đó (Windows → Cài đặt → Thời gian & ngôn ngữ → Giọng nói); máy không có loa thì bấm chỉ không nghe thấy gì.
 
 ## Tính năng
 

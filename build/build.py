@@ -427,17 +427,20 @@ def main():
     tpl = (ROOT / "build" / "template.html").read_text(encoding="utf-8").replace("@@VERSION@@", version)
     assert tpl.count("@@DATA@@") == 1 and tpl.count("/*@@EDITION@@*/") == 1 and tpl.count("/*@@NO_SPEECH@@*/false") == 1
 
-    # Các bản: (tên file, ngôn ngữ tra). Bản Trung giữ tên cũ TuDien.html cho người đã quen.
-    editions = [("TuDien", ["zh"]), ("TuDien-Nhat", ["ja"]), ("TuDien-Han", ["ko"]), ("TuDien-DaNgu", ["zh", "ja", "ko"])]
+    # Các bản: (tên, ngôn ngữ tra). Tên file kèm số phiên bản: TuDien-Trung-v1.0.261028.html …
+    # (tên không kèm phiên bản dùng làm khóa lưu cài đặt trong trình duyệt, để nâng cấp không mất lựa chọn)
+    for old in DIST.glob("TuDien*.html"):          # xóa bản build cũ (kể cả tên cũ / bản KhongLoa trước đây)
+        old.unlink()
+    editions = [("TuDien-Trung", ["zh"]), ("TuDien-Nhat", ["ja"]), ("TuDien-Han", ["ko"]), ("TuDien-DaNgu", ["zh", "ja", "ko"])]
     for name, langs in editions:
         data = "\n".join(f'<script type="text/plain" id="D_{k}">{blobs[k]}</script>'
                          for k in langs + ["en", "vi", "gl"])
         html_ = (tpl.replace("@@DATA@@", data)
-                    .replace("/*@@EDITION@@*/", json.dumps({"langs": langs, "name": name})))
-        for suffix, no_speech in (("", "false"), ("-KhongLoa", "true")):
-            out = DIST / f"{name}{suffix}.html"
-            out.write_text(html_.replace("/*@@NO_SPEECH@@*/false", no_speech), encoding="utf-8")
-            print(f"Xong: {out.name} ({out.stat().st_size / 1e6:.1f} MB)")
+                    .replace("/*@@EDITION@@*/", json.dumps({"langs": langs, "name": name}))
+                    .replace("/*@@NO_SPEECH@@*/false", "false"))   # nút 🔊 tự ẩn khi máy không có giọng đọc
+        out = DIST / f"{name}-{version}.html"
+        out.write_text(html_, encoding="utf-8")
+        print(f"Xong: {out.name} ({out.stat().st_size / 1e6:.1f} MB)")
 
 
 if __name__ == "__main__":

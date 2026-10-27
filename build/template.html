@@ -595,7 +595,9 @@ const head = {zh: w => IDX.zh.has(w) || GLI.zh.has(w), ja: w => IDX.ja.has(w) ||
 let voices = [];
 function loadVoices(){ try{ voices = speechSynthesis.getVoices(); }catch{} }
 if (!NO_SPEECH && "speechSynthesis" in window){ loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
-const voiceFor = l => voices.find(v => v.lang.toLowerCase().startsWith(l));
+// Giọng đọc có sẵn của Windows (chạy offline). Edge còn liệt kê giọng "Online (Natural)" — chỉ chạy khi có internet,
+// nên ưu tiên giọng cục bộ; không có giọng ngôn ngữ đó thì nút 🔊 không hiện.
+const voiceFor = l => { const m = voices.filter(v => v.lang.toLowerCase().startsWith(l)); return m.find(v => v.localService) || m[0]; };
 const sayBtn = (text, l) => !NO_SPEECH && voiceFor(l) ? `<button class="say" title="${t("say")}" data-say="${esc(text)}" data-lang="${l}">🔊</button>` : "";
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-say]"); if (!b) return;
